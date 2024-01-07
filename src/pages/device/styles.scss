@@ -1,0 +1,39 @@
+.device-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.device-action-row {
+  display: flex;
+  flex-direction: row;
+}
+.device-action-buttons {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.device-action-search-layout {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+.device-action-filter {
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+}
+.device-action-filter-label {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.ant-input-group-addon {
+  border-bottom: 1px solid #0e6fba !important;
+  border-left: 1px solid #0e6fba !important;
+  border-top: 1px solid #0e6fba !important;
+}

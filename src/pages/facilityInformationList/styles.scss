@@ -1,0 +1,57 @@
+.facility-list-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.facility-list-action-row {
+  display: flex;
+  flex-direction: row;
+}
+.facility-list-action-buttons {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.facility-list-action-search-layout {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+.facility-list-action-filter {
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+}
+.facility-list-action-filter-label {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.facility-list-container .add-pic-icon {
+  width: 12px;
+  height: 12px;
+  margin-left: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.facility-list-container .add-pic-text {
+  color: rgb(14, 111, 186);
+  font-weight: 500;
+  font-style: normal;
+  cursor: pointer;
+}
+.edit-facility-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.ant-input-group-addon {
+  border-bottom: 1px solid #0e6fba !important;
+  border-left: 1px solid #0e6fba !important;
+  border-top: 1px solid #0e6fba !important;
+}

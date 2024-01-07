@@ -1,0 +1,22 @@
+.datepicker-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.datepicker-title {
+  font-weight: 500;
+  font-size: 16px;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  line-height: 32px;
+}
+.datepicker-container .ant-datepicker {
+  width: 100%;
+}
+.ant-picker {
+  border: 1px solid #0e6fba;
+  border-radius: 6px;
+}

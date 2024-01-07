@@ -1,0 +1,46 @@
+.select-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.select-title {
+  font-weight: 500;
+  font-size: 16px;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  line-height: 32px;
+}
+.select-container .ant-select {
+  width: 100%;
+}
+.form-patient-detail-sensor {
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 20px;
+}
+.form-patient-detail-sensor-status {
+  font-weight: 500;
+  font-style: normal;
+  color: #f7b52c;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.form-patient-detail-row-seach {
+  margin-top: 20px;
+}
+.form-patient-detail-search-button {
+  margin-right: 20px;
+}
+.ant-select-selector {
+  border: 1px solid #0e6fba !important;
+  border-radius: 6px;
+}
+.ant-select-arrow {
+  color: #0e6fba !important;
+}

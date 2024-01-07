@@ -1,0 +1,25 @@
+.menu-containner {
+  padding-left: 20px;
+}
+.ant-menu-light {
+  opacity: 0.95;
+  background-color: #e6e6e6;
+  position: absolute;
+  top: 83px;
+  left: 0px;
+  z-index: 9999;
+}
+.ant-menu-item-selected {
+  background-color: #e6f4ff;
+}
+// .ant-menu-submenu {
+//   height: 40px;
+// }
+// .ant-menu-item {
+//   background-color: #e6e6e6;
+//   height: 40px;
+// }
+// .ant-menu-title-content {
+//   color: #000000;
+//   font-weight: 600;
+// }

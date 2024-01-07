@@ -1,0 +1,99 @@
+.patient-item-container {
+  display: flex;
+  width: 180px;
+  height: 190px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.patient-item-container .patient-item-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.patient-item-container .patient-item-col {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.patient-item-container .diaper-icon-red {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 5px;
+}
+.patient-item-container .patient-diaperid {
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 12px;
+}
+.patient-item-container .patient-diaper-size {
+  background-color: #f7b52c;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000000;
+}
+.patient-item-container .patient-diaper-size-text {
+  font-weight: 700;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 20px;
+}
+.patient-item-container .patient-icon {
+  width: 40px;
+  height: 80px;
+}
+.patient-item-container .patient-name {
+  width: 70%;
+}
+.patient-item-container .patient-gender {
+  width: 30%;
+}
+.patient-item-container .patient-temp {
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: rgb(0, 191, 99);
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.patient-item-container .patient-battery-bar {
+  margin-top: 5px;
+}
+.patient-item-container .patient-battery-label {
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 5px;
+}
+.patient-item-container .patient-status {
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.patient-item-container .patient-status-time {
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 12px;
+}

@@ -1,0 +1,18 @@
+.ant-btn .button-text {
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+}
+.ant-btn:disabled {
+  background: rgb(166, 166, 166) !important;
+}
+.ant-btn:disabled .button-text {
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(255, 255, 255) !important;
+  text-decoration: none;
+  font-size: 16px;
+}

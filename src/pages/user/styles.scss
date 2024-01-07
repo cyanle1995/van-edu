@@ -1,0 +1,39 @@
+.user-setting-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.user-setting-action-row {
+  display: flex;
+  flex-direction: row;
+}
+.user-setting-action-buttons {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.user-setting-action-search-layout {
+  width: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+.user-setting-action-filter {
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 20px;
+}
+.user-setting-action-filter-label {
+  width: 100px;
+  margin-bottom: 10px;
+}
+.edit-user-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

@@ -1,0 +1,64 @@
+.login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
+.login-logo-icon {
+  width: 200px;
+  height: 50px;
+}
+.login-form {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ebe9e9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+.login-title {
+  font-size: 30px;
+  color: #000000;
+}
+.login-button {
+  margin-top: 30px;
+  width: 100%;
+  height: 42px;
+}
+.login-container .login-form .ant-btn .button-text {
+  font-size: 24px;
+}
+.login-container .login-form .forgot-password {
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(14, 111, 186);
+  text-decoration: underline;
+  width: 100%;
+  text-align: right;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.policy-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  align-items: center;
+}
+.policy-container .policy-content {
+  font-weight: 500;
+  height: 600px;
+  overflow-y: scroll;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  margin: 40px 0px;
+}
+.policy-container .policy-button {
+  width: 250px;
+}
