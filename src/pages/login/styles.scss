@@ -4,61 +4,54 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 60px;
 }
-.login-logo-icon {
+.login-bg{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+}
+.login-img {
   width: 200px;
-  height: 50px;
-}
-.login-form {
-  width: 360px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #ebe9e9;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 40px;
+  height: 200px;
+  border-radius: 50%;
+
 }
 .login-title {
-  font-size: 30px;
-  color: #000000;
+  font-size: 20px;
+  text-align: center;
+  width: 90%;
+  margin-top: 40px;
 }
-.login-button {
-  margin-top: 30px;
-  width: 100%;
-  height: 42px;
+.login-des {
+  font-size: 14px;
+  text-align: center;
+  width: 90%;
+  margin-top: 40px;
 }
-.login-container .login-form .ant-btn .button-text {
-  font-size: 24px;
-}
-.login-container .login-form .forgot-password {
-  font-weight: 500;
-  font-style: normal;
-  color: rgb(14, 111, 186);
-  text-decoration: underline;
-  width: 100%;
-  text-align: right;
-  margin-top: 20px;
+.login-google-layout {
+  height: 40px;
+  width: 70%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid grey;
+  margin-top: 40px;
   cursor: pointer;
 }
-.policy-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 50px;
-  align-items: center;
+.login-gg-img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
-.policy-container .policy-content {
-  font-weight: 500;
-  height: 600px;
-  overflow-y: scroll;
-  font-style: normal;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  margin: 40px 0px;
+.login-gg-txt {
+  font-size: 16px;
+  color: #6059E3;
 }
-.policy-container .policy-button {
-  width: 250px;
+.login-cancel {
+  font-size: 14px;
+  color: #4139D3;
+  margin-top: 40px;
 }

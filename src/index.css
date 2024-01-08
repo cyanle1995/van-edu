@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: MonospaceRegular;
+  /* font-family: MonospaceRegular; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,9 +10,9 @@ code {
     monospace;
 }
 @font-face {
-  font-family: "MonospaceRegular";
+  /* font-family: "MonospaceRegular";
   src: local("MonospaceRegular"),
-    url(./assets/fonts/MonospaceRegular.ttf) format("woff");
+    url(./assets/fonts/MonospaceRegular.ttf) format("woff"); */
 }
 .ant-btn {
   border-radius: 12px;

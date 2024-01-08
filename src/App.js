@@ -3,22 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppHeader from "components/appHeader/AppHeader";
 import NotificationProvider from "use-toast-notification";
 import Loading from "components/loading/Loading";
+import "react-multi-carousel/lib/styles.css";
 import "./App.css";
 
 const Home = lazy(() => import("./pages/home/Home"));
-const Pic = lazy(() => import("./pages/pic/Pic"));
+const Intro = lazy(() => import("./pages/intro/Intro"));
 const Group = lazy(() => import("./pages/group/Group"));
 const Login = lazy(() => import("./pages/login/Login"));
-const FacilityInformationList = lazy(() =>
-  import("./pages/facilityInformationList/FacilityInformationList")
-);
-const FacilityInformation = lazy(() =>
-  import("./pages/facilityInformation/FacilityInformation")
-);
-const DiaperType = lazy(() => import("./pages/diaperType/DiaperType"));
-const Device = lazy(() => import("./pages/device/Device"));
-const User = lazy(() => import("./pages/user/User"));
-const Password = lazy(() => import("./pages/password/Password"));
 
 const App = () => {
   const userInfoString = localStorage.getItem("USER_INFO");
@@ -50,48 +41,16 @@ const App = () => {
               <Switch>
                 <Route path="/" exact component={() => <Login />} />
                 <Route path="/login" exact component={() => <Login />} />
-                <Route path="/password" exact component={() => <Password />} />
               </Switch>
             </Suspense>
           ) : (
             <Suspense fallback={<Loading />}>
-              <AppHeader />
-              <div style={{ paddingLeft: "20px" }}>
+              {/* <AppHeader /> */}
+              <div>
                 <Switch>
-                  <Route path="/" exact component={() => <Home />} />
-                  <Route path="/pic" exact component={() => <Pic />} />
+                <Route path="/login" exact component={() => <Login />} />
+                  <Route path="/" exact component={() => <Intro />} />
                   <Route path="/group" exact component={() => <Group />} />
-                  <Route
-                    path="/master-setting/facility"
-                    exact
-                    component={() =>
-                      userInfo.userId === "admin" ? (
-                        <FacilityInformationList />
-                      ) : (
-                        <FacilityInformation />
-                      )
-                    }
-                  />
-                  <Route
-                    path="/master-setting/diaper-type"
-                    exact
-                    component={() => <DiaperType />}
-                  />
-                  <Route
-                    path="/master-setting/device"
-                    exact
-                    component={() => <Device />}
-                  />
-                  <Route
-                    path="/master-setting/user"
-                    exact
-                    component={() => <User />}
-                  />
-                  <Route
-                    path="/password"
-                    exact
-                    component={() => <Password />}
-                  />
                 </Switch>
               </div>
             </Suspense>
