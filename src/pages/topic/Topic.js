@@ -36,7 +36,7 @@ const freeLesson = [
   { id: 2, name: 'Tên bài học', teacher: 'Dang Tri', numOfVideo: 10 },
   { id: 3, name: 'Tên bài học', teacher: 'Dang Tri', numOfVideo: 30 },
 ]
-const Course = () => {
+const Topic = () => {
 
   return (
     <div className="course-container">
@@ -68,7 +68,7 @@ const Course = () => {
         <div className="course-topic-title">Chủ đề</div>
         <div className="topic-layout">
           {topics.map((item) => {
-            return <div className="topic-item" key={item.name} onClick>
+            return <div className="topic-item">
               <img className="topic-img" src="/topicimg.svg" alt="image" />
               <div className="topic-name">{item.name}</div>
             </div>
@@ -98,4 +98,4 @@ const Course = () => {
     </div>
   );
 };
-export default Course;
+export default Topic;

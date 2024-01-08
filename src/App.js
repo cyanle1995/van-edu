@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AppHeader from "components/appHeader/AppHeader";
 import NotificationProvider from "use-toast-notification";
 import Loading from "components/loading/Loading";
-import "react-multi-carousel/lib/styles.css";
 import "./App.css";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Intro = lazy(() => import("./pages/intro/Intro"));
 const Group = lazy(() => import("./pages/group/Group"));
 const Course = lazy(() => import("./pages/course/Course"));
+const Topic = lazy(() => import("./pages/topic/Topic"));
 const Login = lazy(() => import("./pages/login/Login"));
 
 const App = () => {
@@ -53,6 +53,7 @@ const App = () => {
                   <Route path="/" exact component={() => <Intro />} />
                   <Route path="/group" exact component={() => <Group />} />
                   <Route path="/course" exact component={() => <Course />} />
+                  <Route path="/topic" exact component={() => <Topic />} />
                 </Switch>
               </div>
             </Suspense>
