@@ -13,21 +13,23 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100 - 20px);
+  padding: 10px;
 }
-
+.app-header-text {
+  font-size: 20px;
+  color: black;
+}
 .App-link {
   color: #61dafb;
 }
-
+.hide{
+  visibility: hidden;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +37,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+.ant-slider-handle {
+  display: none;
+}
+.ant-slider-track{
+  background-color: #6059E3 !important;
+}
+.grey-line {
+  height: 1px;
+  width: 100%;
+  background-color: #D6D5E3
+  ;
 }

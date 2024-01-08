@@ -9,6 +9,7 @@ import "./App.css";
 const Home = lazy(() => import("./pages/home/Home"));
 const Intro = lazy(() => import("./pages/intro/Intro"));
 const Group = lazy(() => import("./pages/group/Group"));
+const Course = lazy(() => import("./pages/course/Course"));
 const Login = lazy(() => import("./pages/login/Login"));
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
                 <Route path="/login" exact component={() => <Login />} />
                   <Route path="/" exact component={() => <Intro />} />
                   <Route path="/group" exact component={() => <Group />} />
+                  <Route path="/course" exact component={() => <Course />} />
                 </Switch>
               </div>
             </Suspense>
