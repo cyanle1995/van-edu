@@ -11,6 +11,7 @@ const ButtonComponent = (props) => {
     styles,
     background,
     borderColor,
+    textColor,
     disabled,
     className,
     width,
@@ -34,7 +35,7 @@ const ButtonComponent = (props) => {
         width: width,
       }}
     >
-      <span className="button-text">{text}</span>
+      <span className="button-text" style={{color: textColor ? textColor : ''}}>{text}</span>
     </Button>
   );
 };
