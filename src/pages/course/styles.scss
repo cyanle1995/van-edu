@@ -66,15 +66,17 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.topic-layout {
+.course-topic-layout {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-.topic-item {
+.course-topic-item {
   position: relative;
   margin-bottom: 20px;
 }
 .topic-img{
+  width: 120px;
+  height: 120px;
 
 }
 .topic-name {

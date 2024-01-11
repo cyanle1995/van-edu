@@ -11,7 +11,8 @@ const Login = () => {
     onSuccess: tokenResponse => {
       console.log('tokenResponse', tokenResponse)
       if (tokenResponse?.access_token) {
-        localStorage.setItem('TOKEN', tokenResponse?.access_token)
+        localStorage.setItem('TOKEN', tokenResponse?.access_token);
+        history.push('/course')
       }
     },
   });

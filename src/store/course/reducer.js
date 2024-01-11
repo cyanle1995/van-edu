@@ -1,38 +1,81 @@
 import {
-  USER_LOGIN,
-  USER_LOGIN_SUCCESS,
-  USER_LOGIN_FAIL,
+  GET_LIST_TOPIC,
+  GET_LIST_TOPIC_SUCCESS,
+  GET_LIST_TOPIC_FAIL,
   CLEAR_ERROR_MESSAGE,
+  GET_LIST_COURSE_BY_TOPIC_SUCCESS,
+  GET_LIST_COURSE_BY_TOPIC_FAIL,
+  GET_COURSE_DETAIL_SUCCESS,
+  GET_COURSE_DETAIL_FAIL
 } from "./actionTypes";
 
 const initialState = {
-  loginInfo: {},
+  topics: [],
+  courses: [],
+  courseDetail: {},
   loading: false,
   error: {
     message: "",
   },
 };
 
-const UserReducer = (state = initialState, action) => {
+const CourseReducer = (state = initialState, action) => {
+  console.log('actionaaa', action);
   switch (action.type) {
-    case USER_LOGIN:
+    case GET_LIST_TOPIC:
       state = { ...state, loading: true };
       break;
-    case USER_LOGIN_SUCCESS:
+    case GET_LIST_TOPIC_SUCCESS:
       state = {
         ...state,
-        loginInfo: action.payload,
+        topics: action.payload,
         loading: false,
         error: { message: "" },
       };
       break;
-    case USER_LOGIN_FAIL:
+    case GET_LIST_TOPIC_FAIL:
       state = {
         ...state,
         error: {
           message: action.payload,
         },
-        loginInfo: {},
+        topics: [],
+        loading: false,
+      };
+      break;
+    case GET_LIST_COURSE_BY_TOPIC_SUCCESS:
+      state = {
+        ...state,
+        courses: action.payload,
+        loading: false,
+        error: { message: "" },
+      };
+      break;
+    case GET_LIST_COURSE_BY_TOPIC_FAIL:
+      state = {
+        ...state,
+        error: {
+          message: action.payload,
+        },
+        courses: [],
+        loading: false,
+      };
+      break;
+    case GET_COURSE_DETAIL_SUCCESS:
+      state = {
+        ...state,
+        courseDetail: action.payload,
+        loading: false,
+        error: { message: "" },
+      };
+      break;
+    case GET_COURSE_DETAIL_FAIL:
+      state = {
+        ...state,
+        error: {
+          message: action.payload,
+        },
+        courseDetail: {},
         loading: false,
       };
       break;
@@ -50,4 +93,4 @@ const UserReducer = (state = initialState, action) => {
   return state;
 };
 
-export default UserReducer;
+export default CourseReducer;

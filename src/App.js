@@ -1,6 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import AppHeader from "components/appHeader/AppHeader";
 import NotificationProvider from "use-toast-notification";
 import Loading from "components/loading/Loading";
 import "./App.css";
@@ -50,12 +49,11 @@ const App = () => {
                 {/* <AppHeader /> */}
                 <div>
                   <Switch>
-                    <Route path="/login" exact component={() => <Login />} />
                     <Route path="/" exact component={() => <Intro />} />
                     <Route path="/group" exact component={() => <Group />} />
                     <Route path="/course" exact component={() => <Course />} />
-                    <Route path="/topic" exact component={() => <Topic />} />
-                    <Route path="/lesson" exact component={() => <Lesson />} />
+                    <Route path="/course/:id" exact component={() => <Topic />} />
+                    <Route path="/lesson/:id" exact component={() => <Lesson />} />
                     <Route path="/lesson-detail" exact component={() => <LessonDetail />} />
                   </Switch>
                 </div>
