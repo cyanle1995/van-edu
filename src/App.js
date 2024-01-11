@@ -5,7 +5,8 @@ import NotificationProvider from "use-toast-notification";
 import Loading from "components/loading/Loading";
 import "./App.css";
 import { GG_WEB_CLIENT_ID } from "constants/Constants";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import AppFooter from "components/appFooter/AppFooter";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const Intro = lazy(() => import("./pages/intro/Intro"));
@@ -43,7 +44,9 @@ const App = () => {
                 <Switch>
                   <Route path="/" exact component={() => <Login />} />
                   <Route path="/login" exact component={() => <Login />} />
+                  <Route path="/home" exact component={() => <Home />} />
                 </Switch>
+                <AppFooter />
               </Suspense>
             ) : (
               <Suspense fallback={<Loading />}>
@@ -57,7 +60,11 @@ const App = () => {
                     <Route path="/course" exact component={() => <Course />} />
                     <Route path="/topic" exact component={() => <Topic />} />
                     <Route path="/lesson" exact component={() => <Lesson />} />
-                    <Route path="/lesson-detail" exact component={() => <LessonDetail />} />
+                    <Route
+                      path="/lesson-detail"
+                      exact
+                      component={() => <LessonDetail />}
+                    />
                   </Switch>
                 </div>
               </Suspense>

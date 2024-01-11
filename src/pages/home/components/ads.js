@@ -10,9 +10,9 @@ const adsList = [
 const Ads = () => {
   return (
     <div className="ads-container">
-      {adsList.map((item) => {
+      {adsList.map((item, index) => {
         return (
-          <div className="ads-item">
+          <div className="ads-item" key={index}>
             <div className="ads-item-left">
               <div className="text-group">
                 <div className="title">{item.title}</div>
