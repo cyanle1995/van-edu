@@ -1,17 +1,15 @@
 import axios from "axios";
 
 //apply base url for axios
-// const REACT_APP_APP_URL = "https://mock.apidog.com/m1/412751-0-default/api/";
 const REACT_APP_APP_URL = "https://van.akaky.xyz/api/";
 let axiosApi = axios.create({
   baseURL: REACT_APP_APP_URL,
 });
 
 axiosApi.interceptors.request.use(function (config) {
-  const userInfoString = localStorage.getItem("USER_INFO");
-  if (userInfoString) {
-    const userInfo = JSON.parse(userInfoString);
-    config.headers.Authorization = userInfo.accessToken;
+  const token = localStorage.getItem("TOKEN");
+  if (token) {
+    config.headers.Authorization = token;
   }
   return config;
 });

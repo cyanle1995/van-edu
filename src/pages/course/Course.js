@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "antd";
 import Button from "components/button/Button";
 import { Slider } from 'antd';
+import { useDispatch } from "react-redux";
 import "./styles.scss";
+import { getListTopic } from "store/course/actions";
+import { useSelector } from "react-redux";
+import { getImageURL } from "utils/Utils";
+import { useHistory } from "react-router-dom";
 
 const courses = [
   {
@@ -21,7 +26,7 @@ const courses = [
     status: 10,
   },
 ];
-const topics = [
+const topics1 = [
   { id: 1, name: 'Thiền toạ' },
   { id: 2, name: 'Năng lượng' },
   { id: 3, name: 'Thức tỉnh' },
@@ -37,7 +42,16 @@ const freeLesson = [
   { id: 3, name: 'Tên bài học', teacher: 'Dang Tri', numOfVideo: 30 },
 ]
 const Course = () => {
-
+  const history = useHistory();
+  let dispatch = useDispatch();
+  const { topics } = useSelector((state) => state.CourseReducer);
+  console.log('topicsxxx', topics);
+  useEffect(() => {
+    dispatch(getListTopic())
+  }, [])
+  const onGoToTopic = (id) => {
+    history.push(`course/${id}`)
+  }
   return (
     <div className="course-container">
       <div className="app-header">
@@ -66,11 +80,11 @@ const Course = () => {
         </div>
         <div className="grey-line"></div>
         <div className="course-topic-title">Chủ đề</div>
-        <div className="topic-layout">
+        <div className="course-topic-layout">
           {topics.map((item) => {
-            return <div className="topic-item" key={item.name} onClick>
-              <img className="topic-img" src="/topicimg.svg" alt="image" />
-              <div className="topic-name">{item.name}</div>
+            return <div className="course-topic-item" key={item.id} onClick={() => onGoToTopic(item.id)}>
+              <img className="topic-img" src={getImageURL(item?.attributes?.image?.data?.attributes?.url)} alt="image" />
+              <div className="topic-name">{item?.attributes?.title}</div>
             </div>
           })}
         </div>
@@ -89,7 +103,7 @@ const Course = () => {
                   <img className="lesson-play-video" src="/play-video.svg" alt="image" />
                   <div className="lesson-play-video-txt">{`${item.numOfVideo} video`}</div>
                 </div>
-                <Button className='start-learn-button' key="back" text="Bắt đầu học" background="#6059E3" width={'50%'}/>
+                <Button className='start-learn-button' key="back" text="Bắt đầu học" background="#6059E3" width={'50%'} />
               </div>
             </div>
           })}
