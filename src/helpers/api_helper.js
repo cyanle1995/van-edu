@@ -2,7 +2,7 @@ import axios from "axios";
 
 //apply base url for axios
 // const REACT_APP_APP_URL = "https://mock.apidog.com/m1/412751-0-default/api/";
-const REACT_APP_APP_URL = "https://5e8f501dfe7f2a00165ef1cc.mockapi.io/cyan/";
+const REACT_APP_APP_URL = "https://van.akaky.xyz/api/";
 let axiosApi = axios.create({
   baseURL: REACT_APP_APP_URL,
 });
