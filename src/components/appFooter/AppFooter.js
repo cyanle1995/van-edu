@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
@@ -42,7 +42,6 @@ const menuList = [
 ];
 
 function AppFooter() {
-  const [pageIsSelected, setPageIsSelected] = useState("home");
   const location = useLocation();
   const isUseFooter =
     location.pathname !== "/" && location.pathname !== "/login";
@@ -51,22 +50,18 @@ function AppFooter() {
     return <div></div>;
   }
 
-  const onChangeNav = (isActive, key) => {
-    if(isActive) setPageIsSelected(key);
-  };
-
   return (
     <footer className="footer-container-main">
       {menuList.map((item) => {
         return (
           <NavLink
-            className={`navigation ${item.key === pageIsSelected ? "active" : ""}`}
-            isActive={(isActive) => onChangeNav(isActive, item.key)}
+            className={`navigation ${location.pathname === item.link ? "active" : ""}`}
             to={item.link}
+            key={item.key}
           >
             <img
               className={`icon ${item.key === "master" ? "large" : ""}`}
-              src={item.key === pageIsSelected ? item.iconActive : item.iconDefault}
+              src={location.pathname === item.link ? item.iconActive : item.iconDefault}
               alt="icon"
             />
             <div className="text">{item.name}</div>
