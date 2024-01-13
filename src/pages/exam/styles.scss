@@ -1,0 +1,222 @@
+.exam-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.exam-close-icon-layout {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.exam-close-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.exam-intro-layout {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 20px;
+
+  .exam-intro-time {
+    font-size: 16px;
+    color: #9C99C0;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+
+  .exam-intro-title {
+    font-size: 20px;
+    color: #19191B;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .exam-intro-item {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    align-items: center;
+
+    .exam-intro-item-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+    }
+
+    .exam-intro-item-content {
+      font-size: 16px;
+      color: #9C99C0;
+      font-weight: 400;
+    }
+  }
+}
+
+.exam-intro-icon {
+  width: 70%;
+}
+
+.start-exam-button {
+  margin-top: 50px;
+}
+
+.exam-started-bg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+}
+
+.exam-started-layout {
+  width: calc(100% - 40px);
+  padding-left: 20px;
+  padding-right: 20px;
+
+  .exam-started-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    .exam-started-header-back {
+      width: 48px;
+      height: 48px;
+      background-color: #EFEEF8;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .exam-started-header-back-icon {}
+    }
+
+    .exam-started-header-time {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 90px;
+      border-radius: 6px;
+      height: 48px;
+      background-color: #EFEEF8;
+
+      .exam-started-header-time-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 5px;
+      }
+
+      .exam-started-header-time-value {
+        color: #4139D3;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+
+  .exam-started-progress {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+
+    .exam-started-progress-item-active {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background-color: #6059E3;
+      margin-right: 2px;
+    }
+
+    .exam-started-progress-item {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background-color: #EFEEF8;
+      margin-right: 2px;
+    }
+  }
+
+  .exam-started-qa-layout {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    .exam-started-title {
+      font-size: 14px;
+      color: #606064;
+      font-weight: 400;
+    }
+
+    .exam-started-question {
+      font-size: 16px;
+      color: #000000;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .exam-started-answer-layout {
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 15px;
+      margin-top: 20px;
+      background-color: white;
+    }
+  }
+
+  .exam-started-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .exam-started-footer-pre {}
+
+    .exam-started-footer-next {}
+  }
+}
+
+.modal-confirm-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+
+  .modal-confirm-warning-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .modal-confirm-warning-message {
+    font-size: 20px;
+    color: #19191B;
+    font-weight: 600;
+  }
+
+  .modal-confirm-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+
+    .modal-confirm-footer-exit {
+      margin-right: 20px;
+    }
+  }
+}

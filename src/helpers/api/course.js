@@ -8,6 +8,8 @@ import * as url from "../url_helper";
 //     },
 //   });
 
+export const apiSocialLogin = (params) =>
+    get(url.API_SOCIAL_LOGIN, { params });
 export const apiGetListTopic = () =>
     get(url.API_LIST_TOPIC);
 export const apiGetListCourseByTopic = (id) =>
@@ -22,3 +24,5 @@ export const apiPostComment = (courseId, data) =>
 
 export const apiGetComments = (courseId) =>
     get(`comments/api::course.course:${courseId}/flat?populate[author][populate][0]=avatar&pagination[page]=1&pagination[pageSize]=100`);
+export const apiGetExams = (courseId) =>
+    get(`examination-questions?populate=*&filters[courses]=${courseId}`);
