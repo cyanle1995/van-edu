@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getCourseDetail } from "store/course/actions";
 import { apiGetListLessonByCourse } from "helpers/api/course";
 import { getImageURL } from "utils/Utils";
+import _ from 'lodash';
 
 const Lesson = () => {
   let { courseId, lessonId } = useParams();
@@ -20,7 +21,7 @@ const Lesson = () => {
     }
   }, [lessonId])
   useEffect(() => {
-    if (courseDetail && !course?.data) {
+    if (!_.isEmpty(courseDetail) && !course?.data) {
       apiGetListLessonByCourse(lessonId).then(res => {
         console.log('ress', res);
         if (res?.length > 0) {

@@ -1,5 +1,7 @@
 import { Container } from "react-bootstrap";
 import "./styles.scss";
+import AppFooter from "components/appFooter/AppFooter";
+import { useHistory } from "react-router-dom";
 
 const column1 = [
   { icon: "/speaker.svg", label: "Khóa học" },
@@ -17,6 +19,11 @@ const column2 = [
 ];
 
 const Account = () => {
+  const history = useHistory();
+  const onLogout = () => {
+    history.push('/login');
+    localStorage.clear();
+  }
   return (
     <Container className="account-container">
       <div className="item header">
@@ -52,8 +59,9 @@ const Account = () => {
 
       <div className="item label">
         <img className="icon" src="/speaker.svg" alt="image" />
-        <div className="text">Đăng xuất</div>
+        <div className="text" onClick={onLogout}>Đăng xuất</div>
       </div>
+      <AppFooter />
     </Container>
   );
 };

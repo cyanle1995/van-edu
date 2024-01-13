@@ -31,7 +31,7 @@ const LessonDetail = () => {
   const [videoPlaying, setVideoPlaying] = useState({});
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
-console.log('comment====', comment);
+  console.log('comment====', comment);
   useEffect(() => {
     if (lessonId) {
       apiGetListLessonByCourse(lessonId).then(res => {
@@ -88,14 +88,21 @@ console.log('comment====', comment);
       content: comment
     }).then(res => {
       console.log('comment res', res);
-      getListComment()
+      getListComment();
+      setComment('')
     }).catch(error => {
       console.log('comment error', error);
+      if (error?.response?.status === 403) {
+        history.push('/login');
+        localStorage.clear();
+      }
     })
-  } 
-  const onFinish=() => {
+  }
+  const onFinish = () => {
     history.push(`/course/${courseId}/exam`)
   }
+  console.log('videos', videos);
+  console.log('videoPlaying', videoPlaying);
   return (
     <div className="lesson-detail-container">
       <div className="app-header">
@@ -114,17 +121,17 @@ console.log('comment====', comment);
                 <div className='lession-course-item-content-time'>{getCurrentDuration(item.duration)}</div>
                 <div className='lession-course-item-content-title'>{item.title}</div>
               </div>
-              <img className="lession-course-item-icon" src="/video-pause.png" alt="image" />
+              {item.id === videoPlaying.id ? <img className="lession-course-item-icon" src="/video-pause-playing.png" alt="image" /> : <img className="lession-course-item-icon" src="/video-pause-active.png" alt="image" />}
             </div>
           })}
         </div>
         <div className="w-full-center mb-20">
-          <Button className='start-learn-button' key="back" text="Kết thúc khoá học" background="#6059E3" width={'80%'} onClick={onFinish}/>
+          <Button className='start-learn-button' key="back" text="Kết thúc khoá học" background="#6059E3" width={'80%'} onClick={onFinish} />
         </div>
         <div className="grey-line mb-20"></div>
-        <TextArea rows={4} onChange={(e) => {setComment(e.target.value)}}/>
+        <TextArea rows={4} onChange={(e) => { setComment(e.target.value) }} value={comment} />
         <div className="lesson-comment-layout">
-          <Button className='lesson-comment-button' key="back" text="Comment" background="#ffffff" textColor='#817BEC' borderColor='#817BEC' width={'120px'} disabled={!comment} onClick={onComment}/>
+          <Button className='lesson-comment-button' key="back" text="Comment" background="#ffffff" textColor='#817BEC' borderColor='#817BEC' width={'120px'} disabled={!comment} onClick={onComment} />
         </div>
         <div className="lesson-total-comment">(65) Comment: </div>
         {comments?.length > 0 && comments.map(item => {
