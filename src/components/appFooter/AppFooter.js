@@ -21,14 +21,14 @@ const menuList = [
   {
     key: "master",
     name: "Chuyên gia",
-    link: "/master",
+    link: "/course",
     iconDefault: "/headset.svg",
     iconActive: "/headset.svg",
   },
   {
     key: "store",
     name: "Gian hàng",
-    link: "/store",
+    link: "/course",
     iconDefault: "/store-default.svg",
     iconActive: "/store-active.svg",
   },

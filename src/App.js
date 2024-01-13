@@ -43,18 +43,20 @@ const App = () => {
           <Router>
             {!isAuthen ? (
               <Suspense fallback={<Loading />}>
-                <Switch>
-                  <Route path="/" exact component={() => <Intro />} />
-                  <Route path="/login" exact component={() => <Login />} />
-                  <Route path="/home" exact component={() => <Home />} />
-                    <Route path="/account" exact component={() => <Account />} />
-                    <Route path="/course" exact component={() => <Course />} />
-                    <Route path="/course/:courseId" exact component={() => <Topic />} />
-                    <Route path="/course/:courseId/lesson/:lessonId" exact component={() => <Lesson />} />
-                    <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
-                    <Route path="/event" exact component={() => <Event />} />
-                    <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
-                </Switch>
+                <div style={{paddingBottom: "97px"}}>
+                  <Switch>
+                    <Route path="/" exact component={() => <Intro />} />
+                    <Route path="/login" exact component={() => <Login />} />
+                    <Route path="/home" exact component={() => <Home />} />
+                      <Route path="/account" exact component={() => <Account />} />
+                      <Route path="/course" exact component={() => <Course />} />
+                      <Route path="/course/:courseId" exact component={() => <Topic />} />
+                      <Route path="/course/:courseId/lesson/:lessonId" exact component={() => <Lesson />} />
+                      <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
+                      <Route path="/event" exact component={() => <Event />} />
+                      <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
+                  </Switch>
+                </div>
               </Suspense>
             ) : (
               <Suspense fallback={<Loading />}>
