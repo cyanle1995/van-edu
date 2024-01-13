@@ -20,7 +20,7 @@ const ModalComponent = (props) => {
         open={showModal}
         onOk={onOk}
         onCancel={onCancel}
-        width={width || 800}
+        width={width || 400}
         footer={footer}
         closeIcon={closeIcon}
       >
