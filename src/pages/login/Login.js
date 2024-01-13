@@ -1,5 +1,5 @@
 import "./styles.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useGoogleLogin } from '@react-oauth/google';
@@ -7,6 +7,9 @@ import { useGoogleLogin } from '@react-oauth/google';
 const Login = () => {
   let dispatch = useDispatch();
   const history = useHistory();
+  useEffect(() => {
+    localStorage.removeItem('TOKEN')
+  }, [])
   const login = useGoogleLogin({
     onSuccess: tokenResponse => {
       console.log('tokenResponse', tokenResponse)

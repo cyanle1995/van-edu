@@ -9,7 +9,7 @@ let axiosApi = axios.create({
 axiosApi.interceptors.request.use(function (config) {
   const token = localStorage.getItem("TOKEN");
   if (token) {
-    config.headers.Authorization = token;
+    config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
 });
@@ -22,6 +22,13 @@ axiosApi.interceptors.response.use(
 export async function get(url, config) {
   return await axiosApi
     .get(url, {
+      ...config,
+    })
+    .then((response) => response.data);
+}
+export async function post(url, config) {
+  return await axiosApi
+    .post(url, {
       ...config,
     })
     .then((response) => response.data);

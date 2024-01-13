@@ -22,7 +22,7 @@ const freeLesson = [
   { id: 3, name: '[TT05] Thiền toạ cơ bản cho người mới bắt đầu', teacher: 'Dang Tri' },
 ]
 const Topic = () => {
-  let { id } = useParams();
+  let { courseId } = useParams();
   let dispatch = useDispatch();
   const history = useHistory();
   const { courses } = useSelector((state) => state.CourseReducer);
@@ -31,10 +31,10 @@ const Topic = () => {
   console.log('coursesxxx', courses);
   console.log('courseDataxxx', courseData);
   useEffect(() => {
-    if (id) {
-      dispatch(getListCourseByTopic(id))
+    if (courseId) {
+      dispatch(getListCourseByTopic(courseId))
     }
-  }, [id])
+  }, [courseId])
   useEffect(() => {
     if (courses?.length > 0) {
       const promises = []
@@ -57,16 +57,19 @@ const Topic = () => {
     }
   }, [courses])
 
-  const onDetailCourse = (id) => {
-    dispatch(getCourseDetail(id))
+  const onDetailCourse = (lessonId, videoId) => {
+    history.push(`/course/${courseId}/lesson/${lessonId}/detail/${videoId}`)
   }
   const onGoToLesson = (id) => {
-    history.push(`/lesson/${id}`)
+    history.push(`/course/${courseId}/lesson/${id}`)
+  }
+  const onGoBack = () => {
+    history.push(`/course`)
   }
   return (
     <div className="topic-container">
       <div className="app-header">
-        <img className="app-header-back" src="/arrow-left.svg" alt="image" />
+        <img className="app-header-back" src="/arrow-left.svg" alt="image" onClick={onGoBack}/>
         <div className="app-header-text">Thiền toạ</div>
         <img className="app-header-back" src="/search.svg" alt="image" />
       </div>
@@ -86,7 +89,7 @@ const Topic = () => {
             </div>
             <div className="list-first-course-layout">
               {item?.data && item?.data.map((les) => {
-                return <div className="first-course-item" onClick={()=>onDetailCourse(les.id)}>
+                return <div className="first-course-item" onClick={()=>onDetailCourse(item.id, les.id)}>
                   <img className="first-course-item-img" src={getImageURL(les?.thumb?.url)} alt="image" />
                   <div className="first-course-name">{les.title}</div>
                   {/* <div className="first-course-teacher">{item.teacher}</div> */}
