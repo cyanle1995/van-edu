@@ -14,7 +14,7 @@ const menu = [
 function AppFooter() {
   const location = useLocation();
   const isUseFooter =
-    location.pathname !== "/" && location.pathname !== "/login";
+    location.pathname !== "/" && location.pathname !== "/login" && location.pathname !== "/result";
 
   if (!isUseFooter) {
     return <div></div>;
