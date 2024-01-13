@@ -1,36 +1,69 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.scss";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
-const menu = [
-  { key: 'home', name: "Trang chủ", link: "/home", icon: "/ic_home.png", iconActive: "/ic_home_active.png" },
-  { key: 'course', name: "Khoá học", link: "/course", icon: "/ic_course.png", iconActive: "/ic_course_active.png" },
-  { key: 'expert', name: "Chuyên gia", link: "/course", icon: "/ic_chuyengia.png", iconActive: '/ic_chuyengia.png' },
-  { key: 'store', name: "Gian hàng", link: "/course", icon: "/ic_gianhang.png", iconActive: '/ic_gianhang_active.png' },
-  { key: 'account', name: "Cá nhân", link: "/account", icon: "/ic_canhan.png", iconActive: '/ic_canhan.png' },
+const menuList = [
+  {
+    key: "home",
+    name: "Trang chủ",
+    link: "/home",
+    iconDefault: "/home.svg",
+    iconActive: "/home-active.svg",
+  },
+  {
+    key: "course",
+    name: "Khoá học",
+    link: "/course",
+    iconDefault: "/course-default.svg",
+    iconActive: "/course-active.svg",
+  },
+  {
+    key: "master",
+    name: "Chuyên gia",
+    link: "/course",
+    iconDefault: "/headset.svg",
+    iconActive: "/headset.svg",
+  },
+  {
+    key: "store",
+    name: "Gian hàng",
+    link: "/course",
+    iconDefault: "/store-default.svg",
+    iconActive: "/store-active.svg",
+  },
+  {
+    key: "account",
+    name: "Cá nhân",
+    link: "/account",
+    iconDefault: "/avatar-user.svg",
+    iconActive: "/avatar-user.svg",
+  },
 ];
 
 function AppFooter() {
   const location = useLocation();
   const isUseFooter =
-    location.pathname !== "/" && location.pathname !== "/login" && location.pathname !== "/result";
+    location.pathname !== "/" && location.pathname !== "/login";
 
   if (!isUseFooter) {
     return <div></div>;
   }
-  console.log('location.pathname', location.pathname);
+
   return (
     <footer className="footer-container-main">
-      {menu.map((item, index) => {
+      {menuList.map((item) => {
         return (
           <NavLink
-            className="navigation"
-            activeClassName="active"
-            key={index}
+            className={`navigation ${location.pathname === item.link ? "active" : ""}`}
             to={item.link}
+            key={item.key}
           >
-            <img className="nav-bar-icon" style={{width: item.name === 'Chuyên gia' ? 56 : 24, height: item.name === 'Chuyên gia' ? 56 : 24}} src={location.pathname === item.link ? item.iconActive : item.icon} alt="image" />
+            <img
+              className={`icon ${item.key === "master" ? "large" : ""}`}
+              src={location.pathname === item.link ? item.iconActive : item.iconDefault}
+              alt="icon"
+            />
             <div className="text">{item.name}</div>
           </NavLink>
         );

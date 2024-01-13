@@ -21,6 +21,16 @@
     gap: 6px;
     text-decoration: none;
 
+    .icon {
+      width: 19px;
+      height: 19px;
+
+      &.large {
+        width: 56px;
+        height: 56px;
+      }
+    }
+
     .text {
       font-size: 10px;
       font-style: normal;
@@ -29,7 +39,7 @@
       color: #d6d5e3;
     }
 
-    &.active  {
+    &.active {
       .text {
         color: #6059e3 !important;
       }

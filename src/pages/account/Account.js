@@ -4,26 +4,26 @@ import AppFooter from "components/appFooter/AppFooter";
 import { useHistory } from "react-router-dom";
 
 const column1 = [
-  { icon: "/speaker.svg", label: "Khóa học" },
-  { icon: "/speaker.svg", label: "Chứng chỉ của tôi" },
-  { icon: "/speaker.svg", label: "Trở thành mentor" },
-  { icon: "/speaker.svg", label: "Lịch sử mua hàng" },
+  { icon: "/book.svg", label: "Khóa học" },
+  { icon: "/chung-chi.svg", label: "Chứng chỉ của tôi" },
+  { icon: "/mentor.svg", label: "Trở thành mentor" },
+  { icon: "/account-history.svg", label: "Lịch sử mua hàng" },
 ];
 
 const column2 = [
-  { icon: "/speaker.svg", label: "Thông báo" },
-  { icon: "/speaker.svg", label: "Đánh giá" },
-  { icon: "/speaker.svg", label: "Hỗ trợ khách hàng" },
-  { icon: "/speaker.svg", label: "Giới thiệu bạn bè" },
-  { icon: "/speaker.svg", label: "Điều khoản & Chính sách" },
+  { icon: "/account-notication.svg", label: "Thông báo" },
+  { icon: "/star.svg", label: "Đánh giá" },
+  { icon: "/customer.svg", label: "Hỗ trợ khách hàng" },
+  { icon: "/share.svg", label: "Giới thiệu bạn bè" },
+  { icon: "/infomation.svg", label: "Điều khoản & Chính sách" },
 ];
 
 const Account = () => {
   const history = useHistory();
   const onLogout = () => {
-    history.push('/login');
+    history.push("/login");
     localStorage.clear();
-  }
+  };
   return (
     <Container className="account-container">
       <div className="item header">
@@ -32,7 +32,7 @@ const Account = () => {
           <div className="name">Quyetle127</div>
         </div>
 
-        <img src="/speaker.svg" alt="image" className="icon" />
+        <img src="/edit.svg" alt="image" className="icon" />
       </div>
 
       <div className="item column">
@@ -57,9 +57,9 @@ const Account = () => {
         })}
       </div>
 
-      <div className="item label">
-        <img className="icon" src="/speaker.svg" alt="image" />
-        <div className="text" onClick={onLogout}>Đăng xuất</div>
+      <div className="item label" onClick={onLogout}>
+        <img className="icon" src="/logout.svg" alt="image" />
+        <div className="text">Đăng xuất</div>
       </div>
       <AppFooter />
     </Container>
