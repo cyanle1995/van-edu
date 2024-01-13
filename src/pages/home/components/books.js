@@ -33,7 +33,7 @@ const Books = () => {
     <div className="list-container">
       <div className="heading">
         <div className="text">Các đầu sách miễn phí</div>
-        <img class="icon" src="/arrow-right.svg" alt="image" />
+        <img className="icon" src="/arrow-right.svg" alt="image" />
       </div>
 
       <div className="book-list">

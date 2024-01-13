@@ -33,7 +33,7 @@ const Events = () => {
     <div className="list-container">
       <div className="heading">
         <div className="text">Tất cả sự kiện</div>
-        <img class="icon" src="/arrow-right.svg" alt="image" />
+        <img className="icon" src="/arrow-right.svg" alt="image" />
       </div>
 
       <div className="events-list">

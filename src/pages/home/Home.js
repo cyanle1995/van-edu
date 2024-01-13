@@ -28,8 +28,6 @@ const Home = () => {
       <div className="home-line"></div>
 
       <Questions />
-
-
     </Container>
   );
 };

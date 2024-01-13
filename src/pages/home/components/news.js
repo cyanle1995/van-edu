@@ -26,7 +26,7 @@ const News = () => {
     <div className="list-container">
       <div className="heading">
         <div className="text">Blog tin tức</div>
-        <img class="icon" src="/arrow-right.svg" alt="image" />
+        <img className="icon" src="/arrow-right.svg" alt="image" />
       </div>
 
       <div className="blog-list">

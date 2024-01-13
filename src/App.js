@@ -13,6 +13,7 @@ const Group = lazy(() => import("./pages/group/Group"));
 const Course = lazy(() => import("./pages/course/Course"));
 const Topic = lazy(() => import("./pages/topic/Topic"));
 const Lesson = lazy(() => import("./pages/lesson/Lesson"));
+const Account = lazy(() => import("./pages/account/Account"));
 const LessonDetail = lazy(() => import("./pages/lessonDetail/LessonDetail"));
 const Login = lazy(() => import("./pages/login/Login"));
 
@@ -48,10 +49,11 @@ const App = () => {
             ) : (
               <Suspense fallback={<Loading />}>
                 {/* <AppHeader /> */}
-                <div>
+                <div style={{paddingBottom: "97px"}}>
                   <Switch>
                     <Route path="/" exact component={() => <Intro />} />
                     <Route path="/home" exact component={() => <Home />} />
+                    <Route path="/account" exact component={() => <Account />} />
                     <Route path="/group" exact component={() => <Group />} />
                     <Route path="/course" exact component={() => <Course />} />
                     <Route
