@@ -11,32 +11,37 @@ import { useHistory } from "react-router-dom";
 
 const courses = [
   {
-    type: 'UX',
-    name: 'Khoá học UX Design',
-    status: 25,
+    type: '09/12/2023',
+    name: 'The Glory Show - Trải nghiệm',
   },
   {
-    type: 'UX',
-    name: 'Khoá học UX Design nâng cao',
-    status: 50,
+    type: '09/12/2023',
+    name: 'The Glory Show nâng cao',
   },
   {
-    type: 'UX',
-    name: 'Khoá học UX Design pro',
-    status: 10,
+    type: '09/12/2023',
+    name: 'The Glory Show pro',
   },
 ];
-
+const topics1 = [
+  { id: 1, name: 'Thiền toạ' },
+  { id: 2, name: 'Năng lượng' },
+  { id: 3, name: 'Thức tỉnh' },
+  { id: 4, name: 'Nấu ăn' },
+  { id: 5, name: 'Tính nữ' },
+  { id: 6, name: 'Chiêm tinh' },
+  { id: 7, name: 'Tử vi' },
+  { id: 8, name: 'Chữa lành' },
+]
 const freeLesson = [
   { id: 1, name: 'Tên bài học', teacher: 'Dang Tri', numOfVideo: 20 },
   { id: 2, name: 'Tên bài học', teacher: 'Dang Tri', numOfVideo: 10 },
   { id: 3, name: 'Tên bài học', teacher: 'Dang Tri', numOfVideo: 30 },
 ]
-const Course = () => {
+const Event = () => {
   const history = useHistory();
   let dispatch = useDispatch();
   const { topics } = useSelector((state) => state.CourseReducer);
-  console.log('topicsxxx', topics);
   useEffect(() => {
     dispatch(getListTopic())
   }, [])
@@ -44,44 +49,34 @@ const Course = () => {
     history.push(`course/${id}`)
   }
   return (
-    <div className="course-container">
+    <div className="event-container">
       <div className="app-header">
         <img className="app-header-back hide" src="/arrow-left.svg" alt="image" />
-        <div className="app-header-text">Danh sách khoá học</div>
+        <div className="app-header-text">Tất cả sự kiện</div>
         <img className="app-header-back" src="/search.svg" alt="image" />
       </div>
-      <div className="course-layout">
-        <div className="mycourse-row">
-          <div className="my-course-txt">Khoá học của tôi</div>
-          <img className="course-icon-next" src="/arrow-right.svg" alt="image" />
+      <div className="event-layout">
+        <div className="myevent-row">
+          <div className="my-event-txt">Sự kiện của tôi</div>
+          <img className="event-icon-next" src="/arrow-right.svg" alt="image" />
         </div>
-        <div className="list-course-layout">
+        <div className="list-event-layout">
           {courses.map((item) => {
-            return <div className="my-course-item">
-              <div className="my-course-item-left">
-                <div className="my-course-item-left-type">{item.type}</div>
-                <div className="my-course-item-left-name">{item.name}</div>
-                <div className="my-course-item-left-status"><Slider defaultValue={item.status} disabled={false} dots={false} handleColorDisabled='#6059E3' /></div>
+            return <div className="my-event-item">
+              <div className="my-event-item-left">
+                <div className="my-event-item-left-type">{item.type}</div>
+                <div className="my-event-item-left-name">{item.name}</div>
               </div>
-              <div className="my-course-item-right">
-                <img className="my-course-item-right-icon" src="/size-baihoc.svg" alt="image" />
+              <div className="my-event-item-right">
+                <img className="my-event-item-right-icon" src="/size-baihoc.svg" alt="image" />
               </div>
             </div>
           })}
         </div>
         <div className="grey-line"></div>
-        <div className="course-topic-title">Chủ đề</div>
-        <div className="course-topic-layout">
-          {topics.map((item) => {
-            return <div className="course-topic-item" key={item.id} onClick={() => onGoToTopic(item.id)}>
-              <img className="topic-img" src={getImageURL(item?.attributes?.image?.data?.attributes?.url)} alt="image" />
-              <div className="topic-name">{item?.attributes?.title}</div>
-            </div>
-          })}
-        </div>
-        <div className="mycourse-row">
-          <div className="my-course-txt">Bài giảng miễn phí</div>
-          <img className="course-icon-next" src="/arrow-right.svg" alt="image" />
+        <div className="myevent-row">
+          <div className="my-event-txt">Sự kiện sắp diễn ra</div>
+          <img className="event-icon-next" src="/arrow-right.svg" alt="image" />
         </div>
         <div className="list-lesson-layout">
           {freeLesson.map((item) => {
@@ -103,4 +98,4 @@ const Course = () => {
     </div>
   );
 };
-export default Course;
+export default Event;

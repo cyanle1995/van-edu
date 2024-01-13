@@ -1,4 +1,4 @@
-import { get } from "../api_helper";
+import { get, post } from "../api_helper";
 import * as url from "../url_helper";
 
 // export const postLogin = (payload) =>
@@ -17,3 +17,8 @@ export const apiGetListLessonByCourse = (id) =>
 
 export const apiGetCourseDetail = (id) =>
     get(`courses/${id}?populate=thumb`);
+export const apiPostComment = (courseId, data) =>
+    post(`comments/api::course.course:${courseId}`, data);
+
+export const apiGetComments = (courseId) =>
+    get(`comments/api::course.course:${courseId}/flat?populate[author][populate][0]=avatar&pagination[page]=1&pagination[pageSize]=100`);

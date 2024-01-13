@@ -1,0 +1,146 @@
+.event-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.event-layout {
+  padding: 20px;
+}
+.myevent-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.my-event-txt {
+  font-size: 16px;
+  color: #000000;
+  font-weight: 600;
+}
+.event-icon-next {
+  width: 24px;
+  height: 24px;
+}
+.list-event-layout{
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  margin-bottom: 30px;
+}
+.my-event-item{
+  width: 300px;
+  min-width: 300px;
+  border-radius: 5px;
+  background-color: #EFEEF8;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 20px;
+  padding: 10px;
+}
+.my-event-item-left {
+  width: 70%;
+}
+.my-event-item-left-type{
+  font-size: 12px;
+  color: #9C99C0;
+  margin-bottom: 10px;
+}
+.my-event-item-left-name{
+  font-size: 14px;
+  color: #19191B;
+  margin-bottom: 10px;
+}
+.my-event-item-left-status{
+
+}
+.my-event-item-right{
+  width: 25%;
+}
+.my-event-item-right-icon{
+
+}
+.event-topic-title  {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.event-topic-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.event-topic-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+.topic-img{
+  width: 120px;
+  height: 120px;
+
+}
+.topic-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0; 
+  right: 0;
+  margin-left: auto; 
+  margin-right: auto; 
+  font-size: 14px;
+  color: #FFFFFF;
+  width: 100px;
+}
+.list-lesson-layout{
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  margin-bottom: 30px;
+}
+.lesson-item{
+  width: 300px;
+  min-width: 300px;
+  border-radius: 5px;
+  background-color: #EFEEF8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 20px;
+  padding: 10px;
+}
+.lesson-item-img {
+  
+}
+.lesson-name{
+  font-size: 14px;
+  color: #19191B;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.lesson-teacher{
+  font-size: 12px;
+  color: #9C99C0;
+  font-weight: 400;
+  margin-top: 10px;
+}
+.lesson-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.lesson-video {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.lesson-play-video {
+  
+}
+.lesson-play-video-txt {
+  
+}
+.start-learn-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

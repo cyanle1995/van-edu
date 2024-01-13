@@ -17,7 +17,7 @@ const Intro = () => {
     }
   }
   const onCancel = () => {
-    setStatus(status)
+    history.push('/course')
   }
   return (
     <Container className="intro-container">
