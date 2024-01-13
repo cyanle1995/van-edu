@@ -3,34 +3,72 @@ import "./styles.scss";
 import { useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
-const menu = [
-  { name: "Trang chủ", link: "/home", icon: "/speaker.svg" },
-  { name: "Khoá học", link: "/course", icon: "/speaker.svg" },
-  { name: "Chuyên gia", link: "/group", icon: "/speaker.svg" },
-  { name: "Gian hàng", link: "/lesson-detail", icon: "/speaker.svg" },
-  { name: "Cá nhân", link: "/account", icon: "/speaker.svg" },
+const menuList = [
+  {
+    key: "home",
+    name: "Trang chủ",
+    link: "/home",
+    iconDefault: "/home.svg",
+    iconActive: "/home-active.svg",
+  },
+  {
+    key: "course",
+    name: "Khoá học",
+    link: "/course",
+    iconDefault: "/course-default.svg",
+    iconActive: "/course-active.svg",
+  },
+  {
+    key: "master",
+    name: "Chuyên gia",
+    link: "/master",
+    iconDefault: "/headset.svg",
+    iconActive: "/headset.svg",
+  },
+  {
+    key: "store",
+    name: "Gian hàng",
+    link: "/store",
+    iconDefault: "/store-default.svg",
+    iconActive: "/store-active.svg",
+  },
+  {
+    key: "account",
+    name: "Cá nhân",
+    link: "/account",
+    iconDefault: "/avatar-user.svg",
+    iconActive: "/avatar-user.svg",
+  },
 ];
 
 function AppFooter() {
+  const [pageIsSelected, setPageIsSelected] = useState("home");
   const location = useLocation();
   const isUseFooter =
-    location.pathname !== "/" && location.pathname !== "/login" && location.pathname !== "/result";
+    location.pathname !== "/" && location.pathname !== "/login";
 
   if (!isUseFooter) {
     return <div></div>;
   }
 
+  const onChangeNav = (isActive, key) => {
+    if(isActive) setPageIsSelected(key);
+  };
+
   return (
     <footer className="footer-container-main">
-      {menu.map((item, index) => {
+      {menuList.map((item) => {
         return (
           <NavLink
-            className="navigation"
-            activeClassName="active"
-            key={index}
+            className={`navigation ${item.key === pageIsSelected ? "active" : ""}`}
+            isActive={(isActive) => onChangeNav(isActive, item.key)}
             to={item.link}
           >
-            <img className="icon" src={item.icon} alt="image" />
+            <img
+              className={`icon ${item.key === "master" ? "large" : ""}`}
+              src={item.key === pageIsSelected ? item.iconActive : item.iconDefault}
+              alt="icon"
+            />
             <div className="text">{item.name}</div>
           </NavLink>
         );
