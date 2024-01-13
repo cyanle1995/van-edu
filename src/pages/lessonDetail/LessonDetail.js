@@ -93,6 +93,9 @@ console.log('comment====', comment);
       console.log('comment error', error);
     })
   } 
+  const onFinish=() => {
+    history.push(`/course/${courseId}/exam`)
+  }
   return (
     <div className="lesson-detail-container">
       <div className="app-header">
@@ -116,7 +119,7 @@ console.log('comment====', comment);
           })}
         </div>
         <div className="w-full-center mb-20">
-          <Button className='start-learn-button' key="back" text="Kết thúc khoá học" background="#6059E3" width={'80%'} />
+          <Button className='start-learn-button' key="back" text="Kết thúc khoá học" background="#6059E3" width={'80%'} onClick={onFinish}/>
         </div>
         <div className="grey-line mb-20"></div>
         <TextArea rows={4} onChange={(e) => {setComment(e.target.value)}}/>

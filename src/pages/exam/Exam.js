@@ -5,6 +5,7 @@ import Button from "components/button/Button";
 import { Checkbox, Radio } from 'antd';
 import { apiGetExams } from "helpers/api/course";
 import Modal from "components/modal/Modal";
+import ResultExam from './components/resultExam';
 const STATUS = {
   INIT: 'INIT',
   STARTED: 'STARTED',
@@ -17,14 +18,15 @@ const Exam = () => {
   const [status, setStatus] = useState(STATUS.INIT)
 
   const [questions, setQuestions] = useState([])
-  // console.log('questionsxxx', questions);
+  console.log('questionsxxx', questions);
   const [currQuestion, setCurrQuestion] = useState({})
   const [showModalExit, setShowModalExit] = useState(false)
   const [showModalTimeout, setShowModalTimeout] = useState(false)
   const [timer, setTimer] = useState("00:00");
 
+  console.log('currQuestion', currQuestion);
   useEffect(() => {
-    apiGetExams(courseId).then(res => {
+    apiGetExams(9).then(res => {
       if (res?.data?.length > 0) {
         res.data.forEach(ele => {
           ele.attributes.user_answers.data = []
@@ -76,7 +78,7 @@ const Exam = () => {
   };
   const getDeadTime = () => {
     let deadline = new Date();
-    deadline.setSeconds(deadline.getSeconds() + 10);
+    deadline.setSeconds(deadline.getSeconds() + 1800);
     return deadline;
   };
   const onAnswerMultiple = (id) => {
@@ -104,6 +106,9 @@ const Exam = () => {
     const index = questions.findIndex(item => item.id === currQuestion.id);
     if (index < questions.length - 1) {
       setCurrQuestion(questions[index + 1])
+    } else {
+      setStatus(STATUS.VIEW_RESULT);
+      if (Ref.current) clearInterval(Ref.current);
     }
   }
   const onQuitExam = () => {
@@ -117,6 +122,7 @@ const Exam = () => {
   }
   const onViewResult = () => {
     setShowModalTimeout(false);
+    setStatus(STATUS.VIEW_RESULT)
   }
   const modalExitContent = () => {
     return (
@@ -176,7 +182,7 @@ const Exam = () => {
           </div>
           <div className="exam-started-footer">
             <Button className='exam-started-footer-pre' text="Câu trước" background={isFirstQuestion ? "#F5F5FA" : "#6059E3"} textColor={isFirstQuestion ? 'black' : 'white'} width={'160px'} onClick={onPrevious} disabled={isFirstQuestion} />
-            <Button className='exam-started-footer-next' text="Tiếp" background={isLastQuestion ? "#F5F5FA" : "#6059E3"} textColor={isLastQuestion ? 'black' : 'white'} width={'160px'} onClick={onNext} disabled={isLastQuestion} />
+            <Button className='exam-started-footer-next' text={isLastQuestion ? "Hoàn thành" : "Tiếp"} background={"#6059E3"}  width={'160px'} onClick={onNext} disabled={currQuestion?.attributes?.user_answers?.data?.length === 0}/>
           </div>
         </div>
         <Modal showModal={showModalExit} width='80%' closeIcon={false} content={modalExitContent()} footer={false} />
@@ -184,7 +190,9 @@ const Exam = () => {
       </div>
     )
   }
-
+  if (status === STATUS.VIEW_RESULT) {
+    return <ResultExam timer={timer} questions={questions}/>
+  }
   return (
     <div className="exam-container">
       <div className="exam-close-icon-layout"><img className="exam-close-icon" src="/close.png" alt="image" /></div>

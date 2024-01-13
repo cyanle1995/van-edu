@@ -64,11 +64,10 @@ const App = () => {
                     <Route path="/course/:courseId/lesson/:lessonId" exact component={() => <Lesson />} />
                     <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
                     <Route path="/event" exact component={() => <Event />} />
-                    <Route path="/result" exact component={() => <ResultExam />} />
                     <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
                   </Switch>
                 </div>
-                <AppFooter />
+                {/* <AppFooter /> */}
               </Suspense>
             )}
           </Router>
