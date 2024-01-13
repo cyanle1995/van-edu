@@ -8,6 +8,7 @@ import { getListTopic } from "store/course/actions";
 import { useSelector } from "react-redux";
 import { getImageURL } from "utils/Utils";
 import { useHistory } from "react-router-dom";
+import AppFooter from "components/appFooter/AppFooter";
 
 const courses = [
   {
@@ -100,6 +101,7 @@ const Course = () => {
           })}
         </div>
       </div>
+      <AppFooter />
     </div>
   );
 };

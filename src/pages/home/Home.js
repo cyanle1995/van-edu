@@ -7,6 +7,7 @@ import Events from "./components/events";
 import Books from "./components/books";
 import Questions from "./components/questions";
 import News from "./components/news";
+import AppFooter from "components/appFooter/AppFooter";
 
 const Home = () => {
   return (
@@ -28,6 +29,7 @@ const Home = () => {
       <div className="home-line"></div>
 
       <Questions />
+      <AppFooter /> 
     </Container>
   );
 };

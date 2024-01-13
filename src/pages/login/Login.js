@@ -9,15 +9,15 @@ const Login = () => {
   let dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    localStorage.removeItem('TOKEN')
+    localStorage.clear()
   }, [])
   const login = useGoogleLogin({
     onSuccess: tokenResponse => {
       console.log('tokenResponse', tokenResponse)
       if (tokenResponse?.access_token) {
-        
+
         onSsoLogin(tokenResponse?.access_token)
-        
+
       }
     },
   });
@@ -29,10 +29,13 @@ const Login = () => {
       console.log('Login=== res', res);
       localStorage.setItem('TOKEN', res?.jwt);
       localStorage.setItem('USER', JSON.stringify(res?.user));
-      history.push('/course')
+      history.push('/home')
     }).catch(error => {
       console.log('Login=== error', error);
     })
+  }
+  const onCancel = () => {
+    history.push('/home')
   }
   return (
     <div className="login-container">
@@ -52,7 +55,7 @@ const Login = () => {
           console.log('Login Failed');
         }}
       />; */}
-      <div className="login-cancel">Bỏ qua</div>
+      <div className="login-cancel" onClick={onCancel}>Bỏ qua</div>
     </div>
   );
 };
