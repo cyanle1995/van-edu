@@ -8,8 +8,19 @@ import Books from "./components/books";
 import Questions from "./components/questions";
 import News from "./components/news";
 import AppFooter from "components/appFooter/AppFooter";
+import { useEffect } from "react";
+import { getCourses, getBooks, getQuestions } from "store/home/actions";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCourses());
+    dispatch(getBooks());
+    dispatch(getQuestions())
+  }, []);
+
   return (
     <Container className="home-container">
       <StatusBar />
@@ -29,7 +40,7 @@ const Home = () => {
       <div className="home-line"></div>
 
       <Questions />
-      <AppFooter /> 
+      <AppFooter />
     </Container>
   );
 };
