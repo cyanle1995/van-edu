@@ -26,3 +26,6 @@ export const apiGetComments = (courseId) =>
     get(`comments/api::course.course:${courseId}/flat?populate[author][populate][0]=avatar&pagination[page]=1&pagination[pageSize]=100`);
 export const apiGetExams = (courseId) =>
     get(`examination-questions?populate=*&filters[courses]=${courseId}`);
+
+export const apiPostOrders = (data) =>
+    post(`orders`, data);

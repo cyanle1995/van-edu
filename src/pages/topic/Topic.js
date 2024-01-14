@@ -2,37 +2,25 @@ import { useParams, useHistory } from 'react-router-dom';
 import "./styles.scss";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCourseDetail, getListCourseByTopic } from 'store/course/actions';
+import { getCourseDetail, getListCourseByTopic, getListTopic } from 'store/course/actions';
 import { apiGetListLessonByCourse } from 'helpers/api/course';
 import { getImageURL } from 'utils/Utils';
 
-const topics = [
-  { id: 1, name: 'Thiền toạ' },
-  { id: 2, name: 'Năng lượng' },
-  { id: 3, name: 'Thức tỉnh' },
-  { id: 4, name: 'Nấu ăn' },
-  { id: 5, name: 'Tính nữ' },
-  { id: 6, name: 'Chiêm tinh' },
-  { id: 7, name: 'Tử vi' },
-  { id: 8, name: 'Chữa lành' },
-]
-const freeLesson = [
-  { id: 1, name: '[TT05] Thiền toạ cơ bản cho người mới bắt đầu', teacher: 'Dang Tri' },
-  { id: 2, name: '[TT05] Thiền toạ cơ bản cho người mới bắt đầu', teacher: 'Dang Tri' },
-  { id: 3, name: '[TT05] Thiền toạ cơ bản cho người mới bắt đầu', teacher: 'Dang Tri' },
-]
+
 const Topic = () => {
   let { courseId } = useParams();
   let dispatch = useDispatch();
   const history = useHistory();
-  const { courses } = useSelector((state) => state.CourseReducer);
-
+  const { courses, topics } = useSelector((state) => state.CourseReducer);
   const [courseData, setCourseData] = useState([]);
   console.log('coursesxxx', courses);
   console.log('courseDataxxx', courseData);
+  console.log('courseId', courseId);
+  console.log('topics', topics);
   useEffect(() => {
     if (courseId) {
       dispatch(getListCourseByTopic(courseId))
+      dispatch(getListTopic())
     }
   }, [courseId])
   useEffect(() => {
@@ -54,17 +42,27 @@ const Topic = () => {
           setCourseData(cData)
         }
       });
+    } else {
+      setCourseData([])
     }
   }, [courses])
 
-  const onDetailCourse = (lessonId, videoId) => {
-    history.push(`/course/${courseId}/lesson/${lessonId}/detail/${videoId}`)
+  const onDetailCourse = (lessonId, videoId, course) => {
+    if (!course?.attributes?.is_free) {
+      history.push(`/course-payment`)
+    } else {
+      history.push(`/course/${courseId}/lesson/${lessonId}/detail/${videoId}`)
+    }
+    
   }
   const onGoToLesson = (id) => {
     history.push(`/course/${courseId}/lesson/${id}`)
   }
   const onGoBack = () => {
     history.push(`/course`)
+  }
+  const onSelectTopic = (id) => {
+    history.push(`/course/${id}`)
   }
   return (
     <div className="topic-container">
@@ -76,8 +74,8 @@ const Topic = () => {
       <div className="topic-layout">
         <div className="topic-list-row">
           {topics.map((item, index) => {
-            if (index === 0) return <div className="topic-item-selected">{item.name}</div>
-            return <div className="topic-item">{item.name}</div>
+            if (courseId == item.id) return <div className="topic-item-selected" onClick={() => onSelectTopic(item.id)}>{item?.attributes?.title}</div>
+            return <div className="topic-item" onClick={() => onSelectTopic(item.id)}>{item?.attributes?.title}</div>
           })}
         </div>
         {courseData?.length > 0 && courseData.map((item) => {
@@ -89,7 +87,7 @@ const Topic = () => {
             </div>
             <div className="list-first-course-layout">
               {item?.data && item?.data.map((les) => {
-                return <div className="first-course-item" onClick={()=>onDetailCourse(item.id, les.id)}>
+                return <div className="first-course-item" onClick={()=>onDetailCourse(item.id, les.id, item)}>
                   <img className="first-course-item-img" src={getImageURL(les?.thumb?.url)} alt="image" />
                   <div className="first-course-name">{les.title}</div>
                   {/* <div className="first-course-teacher">{item.teacher}</div> */}

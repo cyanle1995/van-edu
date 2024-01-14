@@ -18,6 +18,7 @@ const Event = lazy(() => import("./pages/event/Event"));
 const Login = lazy(() => import("./pages/login/Login"));
 const ResultExam = lazy(() => import("./pages/resultExam"));
 const Exam = lazy(() => import("./pages/exam/Exam"));
+const CoursePayment = lazy(() => import("./pages/coursePayment/CoursePayment"));
 
 const App = () => {
   const userInfoString = localStorage.getItem("TOKEN");
@@ -63,7 +64,6 @@ const App = () => {
                 {/* <AppHeader /> */}
                 <div style={{paddingBottom: "97px"}}>
                   <Switch>
-                    <Route path="/" exact component={() => <Home />} />
                     <Route path="/login" exact component={() => <Login />} />
                     <Route path="/home" exact component={() => <Home />} />
                     <Route path="/account" exact component={() => <Account />} />
@@ -73,6 +73,7 @@ const App = () => {
                     <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
                     <Route path="/event" exact component={() => <Event />} />
                     <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
+                    <Route path="/course-payment" exact component={() => <CoursePayment />} />
                   </Switch>
                 </div>
                 {/* <AppFooter /> */}

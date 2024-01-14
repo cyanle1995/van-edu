@@ -10,7 +10,7 @@ import Modal from "components/modal/Modal";
 const ResultExam = (props) => {
   console.log('props', props);
   const history = useHistory();
-  const { timer, questions } = props;
+  const { timer, questions, setStatus } = props;
   const [data, setData] = useState([]);
   const [mark, setMark] = useState(0);
 
@@ -47,14 +47,13 @@ const ResultExam = (props) => {
         }
       });
       setMark(parseInt(numberCorrectAnswer * 100 / questionsList?.length))
-      console.log('numberCorrectAnswer', numberCorrectAnswer);
     }
   }, [questions]);
   const onSubmit = () => {
     if (mark >= 80) {
       setShowModal(true)
     } else {
-
+      window.location.reload()
     }
   }
   const onCancel = () => {
