@@ -3,47 +3,20 @@ import "../styles.scss";
 import { useEffect, useState } from "react";
 import { apiGetListHomeEvent } from "helpers/api/course";
 
-const eventList = [
-  {
-    share: 124,
-    like: 510,
-    time: "09/12/2023",
-    name: "Tên sự kiện",
-    premium: true,
-    cover: "/size-event.svg",
-  },
-  {
-    share: 124,
-    like: 510,
-    time: "09/12/2023",
-    name: "Tên sự kiện",
-    premium: false,
-    cover: "/size-event.svg",
-  },
-  {
-    share: 124,
-    like: 510,
-    time: "09/12/2023",
-    name: "Tên sự kiện",
-    premium: true,
-    cover: "/size-event.svg",
-  },
-];
-
 const Events = () => {
-
-  const [events, setEvents] = useState([])
+  const [events, setEvents] = useState([]);
   useEffect(() => {
-    apiGetListHomeEvent().then(res =>{
-      console.log('ressss', res);
-      if (res.data?.length > 0) {
-        setEvents(res.data)
-      }
-    }).catch(error => {
-      console.log('errorxxx', error);
-      setEvents([])
-    })
-  }, [])
+    apiGetListHomeEvent()
+      .then((res) => {
+        if (res.data?.length > 0) {
+          setEvents(res.data);
+        }
+      })
+      .catch((error) => {
+        setEvents([]);
+      });
+  }, []);
+
   return (
     <div className="list-container">
       <div className="heading">
