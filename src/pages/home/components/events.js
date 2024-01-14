@@ -1,5 +1,7 @@
 import EventCard from "components/eventCard/eventCard";
 import "../styles.scss";
+import { useEffect, useState } from "react";
+import { apiGetListHomeEvent } from "helpers/api/course";
 
 const eventList = [
   {
@@ -29,6 +31,19 @@ const eventList = [
 ];
 
 const Events = () => {
+
+  const [events, setEvents] = useState([])
+  useEffect(() => {
+    apiGetListHomeEvent().then(res =>{
+      console.log('ressss', res);
+      if (res.data?.length > 0) {
+        setEvents(res.data)
+      }
+    }).catch(error => {
+      console.log('errorxxx', error);
+      setEvents([])
+    })
+  }, [])
   return (
     <div className="list-container">
       <div className="heading">
@@ -37,7 +52,7 @@ const Events = () => {
       </div>
 
       <div className="events-list">
-        {eventList.map((item, index) => {
+        {events.map((item, index) => {
           return <EventCard item={item} key={index} btnText="Xem thêm" />;
         })}
       </div>

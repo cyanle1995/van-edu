@@ -1,4 +1,5 @@
 import "../styles.scss";
+import Button from "components/button/Button";
 
 const questionList = [
   {
@@ -35,7 +36,7 @@ const Questions = () => {
         })}
       </div>
 
-      <div className="contact">Liên hệ chuyên gia</div>
+      <Button className='contact' key="back" text="Liên hệ chuyên gia" background="#FFFFFF" textColor='#817BEC' width={'50%'} />
     </div>
   );
 };
