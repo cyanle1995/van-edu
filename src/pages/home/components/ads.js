@@ -1,22 +1,35 @@
+import {  useSelector } from "react-redux";
 import "../styles.scss";
 import Button from "components/button/Button";
-
-const adsList = [
-  { title: "Bài giảng đang có", detail: "100+ bài giảng cập nhật mới" },
-  { title: "Bài giảng đang có", detail: "100+ bài giảng cập nhật mới" },
-  { title: "Bài giảng đang có", detail: "100+ bài giảng cập nhật mới" },
-];
+import { useEffect, useState } from "react";
 
 const Ads = () => {
+  const { courses } = useSelector((state) => state.HomeReducer);
+  const [courseList, setCourseList] = useState([]);
+
+  useEffect(()=> {
+    if(courses && courses.length) {
+      const courselist = courses.map((item)=> {
+        return {
+          id: item.id,
+          title: item.attributes.title,
+          description: item.attributes.description,
+        }
+      });
+
+      setCourseList(courselist);
+    }
+  }, [courses]);
+
   return (
     <div className="ads-container">
-      {adsList.map((item, index) => {
+      {courseList.map((item) => {
         return (
-          <div className="ads-item" key={index}>
+          <div className="ads-item" key={item.id}>
             <div className="ads-item-left">
               <div className="text-group">
                 <div className="title">{item.title}</div>
-                <div className="detail">{item.detail}</div>
+                <div className="detail">{item.description}</div>
               </div>
 
               <Button

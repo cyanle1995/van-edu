@@ -1,34 +1,34 @@
 import "../styles.scss";
-import { Rate } from 'antd';
-
-const bookList = [
-  {
-    name: "Name",
-    premium: false,
-    sachnoi: true,
-    tacgia: "Don Norman",
-    rate: 3.5,
-    cover: "/book-cover.png",
-  },
-  {
-    name: "Name",
-    premium: true,
-    sachnoi: true,
-    tacgia: "Don Norman",
-    rate: 3.5,
-    cover: "/book-cover.png",
-  },
-  {
-    name: "Name",
-    premium: false,
-    sachnoi: false,
-    tacgia: "Don Norman",
-    rate: 3.5,
-    cover: "/book-cover.png",
-  },
-];
+import { Rate } from "antd";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getImageURL } from "utils/Utils";
 
 const Books = () => {
+  const { books } = useSelector((state) => state.HomeReducer);
+  const [bookList, setBookList] = useState([]);
+
+  useEffect(() => {
+    if (books && books.length) {
+      let freeBooks = [];
+      books.forEach((element) => {
+        if (element.is_free) {
+          freeBooks.push({
+            id: element.id,
+            title: element.title,
+            rates: element.rates,
+            premium: element?.premium || false,
+            sachnoi: element?.sachnoi || false,
+            tacgia: element?.tacgia || "ten tac gia",
+            cover: element.thumb[0].url,
+          });
+        }
+      });
+
+      setBookList(freeBooks);
+    }
+  }, [books]);
+
   return (
     <div className="list-container">
       <div className="heading">
@@ -37,16 +37,16 @@ const Books = () => {
       </div>
 
       <div className="book-list">
-        {bookList.map((item, index) => {
+        {bookList.map((item) => {
           return (
-            <div className="card" key={index}>
-              <img className="cover" src={item.cover} alt="image" />
+            <div className="card" key={item.id}>
+              <img className="cover" src={getImageURL(item.cover)} alt="image" />
 
               <div className="content-book">
-                <div className="name-book">{item.name}</div>
+                <div className="name-book">{item.title}</div>
                 <div className="tacgia">{item.tacgia}</div>
                 {item.premium && <div className="premium-book">Premium</div>}
-                <Rate allowHalf defaultValue={item.rate} className="rate"/>
+                <Rate allowHalf defaultValue={item.rates} className="rate" />
               </div>
 
               {item.sachnoi && (
