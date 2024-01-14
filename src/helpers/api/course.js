@@ -26,3 +26,11 @@ export const apiGetComments = (courseId) =>
     get(`comments/api::course.course:${courseId}/flat?populate[author][populate][0]=avatar&pagination[page]=1&pagination[pageSize]=100`);
 export const apiGetExams = (courseId) =>
     get(`examination-questions?populate=*&filters[courses]=${courseId}`);
+
+export const apiPostOrders = (data) =>
+    post(`orders`, data);
+
+export const apiGetListHomeEvent = (data) =>
+    get(`https://van.akaky.xyz/api/events?fields%5B0%5D=title&fields%5B1%5D=description&populate%5Bevent_likes%5D%5Bcount%5D=1&populate%5Bevent_shares%5D%5Bcount%5D=1&populate%5Bevent_comments%5D%5Bcount%5D=1&populate%5Bthumb%5D=1`);
+export const apiGetBlogs = () =>
+    get(`blogs`);

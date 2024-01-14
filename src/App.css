@@ -19,6 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: calc(100 - 20px);
+  /* width: 100%; */
   padding: 10px;
 }
 .app-header-text {

@@ -191,11 +191,14 @@ const Exam = () => {
     )
   }
   if (status === STATUS.VIEW_RESULT) {
-    return <ResultExam timer={timer} questions={questions}/>
+    return <ResultExam timer={timer} questions={questions} setStatus={setStatus}/>
+  }
+  const onClose = () => {
+    history.push(`/course/${courseId}`)
   }
   return (
     <div className="exam-container">
-      <div className="exam-close-icon-layout"><img className="exam-close-icon" src="/close.png" alt="image" /></div>
+      <div className="exam-close-icon-layout"><img className="exam-close-icon" src="/close.png" alt="image" onClick={onClose}/></div>
       <img className="exam-intro-icon" src="/exam.png" alt="image" />
       <div className="exam-intro-layout">
         <div className="exam-intro-time">Thời gian làm bài 30 phút</div>

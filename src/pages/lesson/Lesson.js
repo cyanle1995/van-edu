@@ -45,12 +45,15 @@ const Lesson = () => {
     return 'Video 0 phút'
   }
   const gotoLessonDetail = (videoId) => {
-    if (videoId) {
+    if (videoId && course?.course?.is_free) {
       history.push(`/course/${courseId}/lesson/${lessonId}/detail/${videoId}`)
     }
   }
   const onGoBack = () => {
     history.push(`/course/${courseId}`)
+  }
+  const buyPremium = () => {
+    history.push(`/course-payment`)
   }
   return (
     <div className="lesson-container">
@@ -88,7 +91,8 @@ const Lesson = () => {
           })}
         </div>
         <div className="w-full-center">
-          <Button className='start-learn-button' key="back" text="Bắt đầu học" background="#6059E3" width={'50%'} onClick={() => gotoLessonDetail(course?.data[0]?.id)} />
+          {course?.course?.is_free && <Button className='start-learn-button' key="back" text="Bắt đầu học" background="#6059E3" width={'50%'} onClick={() => gotoLessonDetail(course?.data[0]?.id)} />}
+          {!course?.course?.is_free && <Button className='start-learn-button' key="back" text="Mua premium" background="#6059E3" width={'50%'} onClick={buyPremium} />}
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import "./styles.scss";
 import AppFooter from "components/appFooter/AppFooter";
 import { useHistory } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 const column1 = [
   { icon: "/book.svg", label: "Khóa học" },
   { icon: "/chung-chi.svg", label: "Chứng chỉ của tôi" },
@@ -24,12 +24,17 @@ const Account = () => {
     history.push("/login");
     localStorage.clear();
   };
+  const userInfoString = localStorage.getItem("USER");
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    setUserInfo(JSON.parse(userInfoString));
+  }, [userInfoString]);
   return (
     <Container className="account-container">
       <div className="item header">
         <div className="name-avt">
           <img src="/avatar-user.svg" alt="image" className="avt" />
-          <div className="name">Quyetle127</div>
+          <div className="name">{userInfo?.username || 'Quyetle127'}</div>
         </div>
 
         <img src="/edit.svg" alt="image" className="icon" />

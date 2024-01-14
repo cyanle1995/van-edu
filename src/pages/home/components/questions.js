@@ -1,6 +1,7 @@
 import "../styles.scss";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import Button from "components/button/Button";
 
 const Questions = () => {
   const { questions } = useSelector((state) => state.HomeReducer);
@@ -57,7 +58,7 @@ const Questions = () => {
         })}
       </div>
 
-      <div className="contact">Liên hệ chuyên gia</div>
+      <Button className='contact' key="back" text="Liên hệ chuyên gia" background="#FFFFFF" textColor='#817BEC' width={'50%'} />
     </div>
   );
 };
