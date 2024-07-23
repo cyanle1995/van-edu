@@ -2,14 +2,16 @@ import { apiGetBlogs } from "helpers/api/course";
 import "../styles.scss";
 import { useEffect, useState } from "react";
 import moment from "moment";
+import { getImageURL } from "utils/Utils";
 
 const News = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     apiGetBlogs()
       .then((res) => {
-        if (res.data?.length > 0) {
-          setBlogs(res.data);
+        console.log('blogs', res);
+        if (res?.length > 0) {
+          setBlogs(res);
         }
       })
       .catch((error) => {
@@ -28,13 +30,12 @@ const News = () => {
         {blogs.map((item, index) => {
           return (
             <div className="blog" key={index}>
-              <img className="cover" src="/blog-cover.png" alt="image" />
-
+              {item?.thumb ? <img className="cover" src={getImageURL(item?.thumb)} alt="image" />: <img className="cover" src="/blog-cover.png" alt="image" />}
               <div className="content-blog">
-                <div className="description">{item?.attributes?.title}</div>
+                <div className="description">{item?.title}</div>
                 <div className="date-timeread-content">
                   <div className="date-blog">
-                    {moment(item?.attributes?.publishedAt).format("DD/MM/YYY")}
+                    {moment(item?.date_created).format("DD/MM/YYY")}
                   </div>
                   <div className="timeread-blog">
                     {item?.attributes?.time_reading}

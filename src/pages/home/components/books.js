@@ -3,11 +3,13 @@ import { Rate } from "antd";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getImageURL } from "utils/Utils";
+import { useHistory } from "react-router-dom";
 
 const Books = () => {
+  const history = useHistory();
   const { books } = useSelector((state) => state.HomeReducer);
   const [bookList, setBookList] = useState([]);
-
+  console.log('bookListxxx', books);
   useEffect(() => {
     if (books && books.length) {
       let freeBooks = [];
@@ -15,12 +17,12 @@ const Books = () => {
         if (element.is_free) {
           freeBooks.push({
             id: element.id,
-            title: element.title,
+            title: element.name,
             rates: element.rates,
             premium: element?.premium || false,
             sachnoi: element?.sachnoi || false,
-            tacgia: element?.tacgia || "ten tac gia",
-            cover: element.thumb[0].url,
+            tacgia: element?.auth || "",
+            cover: element.thumb,
           });
         }
       });
@@ -28,19 +30,21 @@ const Books = () => {
       setBookList(freeBooks);
     }
   }, [books]);
-
+  const gotoFreeBook = () => {
+    history.push("/free-book");
+  }
   return (
     <div className="list-container">
       <div className="heading">
         <div className="text">Các đầu sách miễn phí</div>
-        <img className="icon" src="/arrow-right.svg" alt="image" />
+        <img className="icon" src="/arrow-right.svg" alt="image" onClick={gotoFreeBook}/>
       </div>
 
       <div className="book-list">
         {bookList.map((item) => {
           return (
             <div className="card" key={item.id}>
-              <img className="cover" src={getImageURL(item.cover)} alt="image" />
+              {item.cover ? <img className="cover" src={getImageURL(item.cover)} alt="image" /> :  <img className="cover" src='/size_sach.png' alt="image" />}
 
               <div className="content-book">
                 <div className="name-book">{item.title}</div>

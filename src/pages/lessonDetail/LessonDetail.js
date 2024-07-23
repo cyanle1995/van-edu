@@ -11,18 +11,6 @@ import { getImageURL } from "utils/Utils";
 
 const { TextArea } = Input;
 
-// const videos = [
-//   { number: '01', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '02', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '03', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '04', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '05', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '06', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '07', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '08', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '09', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-//   { number: '10', fileType: 'video', time: '5:25 phút', title: 'Chào mừng đến với khoá học' },
-// ]
 const LessonDetail = () => {
   let { courseId, lessonId, videoId } = useParams();
   let dispatch = useDispatch();
@@ -50,7 +38,7 @@ const LessonDetail = () => {
     }
   }, [lessonId])
   const getListComment = () => {
-    apiGetComments(courseId).then(res => {
+    apiGetComments(courseId, 0).then(res => {
       console.log('ress', res);
       if (res?.data?.length > 0) {
         setComments(res.data)
@@ -84,9 +72,7 @@ const LessonDetail = () => {
     history.push(`/course/${courseId}/lesson/${lessonId}`)
   }
   const onComment = () => {
-    apiPostComment(courseId, {
-      content: comment
-    }).then(res => {
+    apiPostComment(courseId,comment).then(res => {
       console.log('comment res', res);
       getListComment();
       setComment('')
@@ -107,11 +93,11 @@ const LessonDetail = () => {
     <div className="lesson-detail-container">
       <div className="app-header">
         <img className="app-header-back" src="/arrow-left.svg" alt="image" onClick={onGoBack} />
-        <div className="app-header-text">{videoPlaying?.title}</div>
+        <div className="app-header-text">{videoPlaying?.name}</div>
         <img className="app-header-back" src="/search.svg" alt="image" />
       </div>
       <div className="lesson-layout">
-        <ReactPlayer controls={true} playing={true} url={getImageURL(videoPlaying?.media?.url)} width='100%' height={'220px'} />
+        <ReactPlayer controls={true} playing={true} url={getImageURL(videoPlaying?.youtube_link)} width='100%' height={'220px'} />
         <div className='lession-course-list-layout'>
           {videos.map((item, index) => {
             return <div className='lession-course-item' key={index} onClick={() => gotoLessonDetail(item)}>
@@ -119,7 +105,7 @@ const LessonDetail = () => {
                 }`}</div>
               <div className='lession-course-item-content'>
                 <div className='lession-course-item-content-time'>{getCurrentDuration(item.duration)}</div>
-                <div className='lession-course-item-content-title'>{item.title}</div>
+                <div className='lession-course-item-content-title'>{item.name}</div>
               </div>
               {item.id === videoPlaying.id ? <img className="lession-course-item-icon" src="/video-pause-playing.png" alt="image" /> : <img className="lession-course-item-icon" src="/video-pause-active.png" alt="image" />}
             </div>
@@ -133,7 +119,7 @@ const LessonDetail = () => {
         <div className="lesson-comment-layout">
           <Button className='lesson-comment-button' key="back" text="Comment" background="#ffffff" textColor='#817BEC' borderColor='#817BEC' width={'120px'} disabled={!comment} onClick={onComment} />
         </div>
-        <div className="lesson-total-comment">(65) Comment: </div>
+        <div className="lesson-total-comment">({comments?.length}) Comment: </div>
         {comments?.length > 0 && comments.map(item => {
           return <div className="lesson-comment-item" key={item.id}>
             <div className="lesson-comment-item-row">

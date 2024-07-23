@@ -7,8 +7,9 @@ import { getCourseDetailFail, getCourseDetailSuccess, getListCourseByTopicFail, 
 function* onGetListTopic() {
   try {
     const response = yield call(apiGetListTopic);
-    if (response?.data) {
-      yield put(getListTopicSuccess(response?.data || []));
+    console.log('response===', response);
+    if (response) {
+      yield put(getListTopicSuccess(response || []));
     } else {
       yield put(getListTopicFail("apiGetListTopic failed"));
     }
@@ -19,8 +20,9 @@ function* onGetListTopic() {
 function* onGetListCourseByTopic(payload) {
   try {
     const response = yield call(apiGetListCourseByTopic, payload.payload);
-    if (response?.data) {
-      yield put(getListCourseByTopicSuccess(response?.data || []));
+    console.log('response===', response);
+    if (response) {
+      yield put(getListCourseByTopicSuccess(response || []));
     } else {
       yield put(getListCourseByTopicFail("apiGetListCourseByTopic failed"));
     }
@@ -31,8 +33,8 @@ function* onGetListCourseByTopic(payload) {
 function* onGetListLessonByCourse(payload) {
   try {
     const response = yield call(apiGetListLessonByCourse, payload.payload);
-    if (response?.data) {
-      yield put(getListLessonByCourseSuccess(response?.data || []));
+    if (response) {
+      yield put(getListLessonByCourseSuccess(response || []));
     } else {
       yield put(getListLessonByCourseFail("apiGetListCourseByTopic failed"));
     }

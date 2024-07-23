@@ -6,10 +6,18 @@ import { apiGetListHomeEvent } from "helpers/api/course";
 const Events = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    apiGetListHomeEvent()
+    console.log('vao day');
+    apiGetListHomeEvent({
+      filter: {
+        is_upcoming: {
+          _eq: true,
+        },
+      },
+    })
       .then((res) => {
-        if (res.data?.length > 0) {
-          setEvents(res.data);
+        console.log('resssxxx', res);
+        if (res?.length > 0) {
+          setEvents(res);
         }
       })
       .catch((error) => {

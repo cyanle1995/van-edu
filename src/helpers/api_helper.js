@@ -1,7 +1,9 @@
 import axios from "axios";
+import {authentication, createDirectus, rest} from '@directus/sdk'
 
 //apply base url for axios
 const REACT_APP_APP_URL = "https://van.akaky.xyz/api/";
+const baseDirectUsURL = 'https://van.akaky.xyz';
 let axiosApi = axios.create({
   baseURL: REACT_APP_APP_URL,
 });
@@ -33,3 +35,6 @@ export async function post(url, config) {
     })
     .then((response) => response.data);
 }
+export const DirectUsClient = createDirectus(baseDirectUsURL)
+  .with(authentication())
+  .with(rest())

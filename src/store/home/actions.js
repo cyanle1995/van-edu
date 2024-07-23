@@ -8,7 +8,10 @@ import {
   GET_BOOKS_FAIL,
   GET_QUESTIONS_ANSWER,
   GET_QUESTIONS_ANSWER_SUCCESS,
-  GET_QUESTIONS_ANSWER_FAIL
+  GET_QUESTIONS_ANSWER_FAIL,
+  GET_MY_BOOKS,
+  GET_MY_BOOKS_SUCCESS,
+  GET_MY_BOOKS_FAIL
 } from "./actionTypes";
 
 export const clearErrorMessage = () => {
@@ -56,7 +59,25 @@ export const getBooksFail = (payload) => {
     payload: payload,
   };
 };
-
+//my books
+export const getMyBooks = (payload) => {
+  return { 
+    type: GET_MY_BOOKS,
+    payload: payload,
+   };
+};
+export const getMyBooksSuccess = (payload) => {
+  return {
+    type: GET_MY_BOOKS_SUCCESS,
+    payload: payload,
+  };
+};
+export const getMyBooksFail = (payload) => {
+  return {
+    type: GET_MY_BOOKS_FAIL,
+    payload: payload,
+  };
+};
 //questions
 export const getQuestions = (payload) => {
   return { 

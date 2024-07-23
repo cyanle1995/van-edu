@@ -2,41 +2,27 @@ import "./styles.scss";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useGoogleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from "@react-oauth/google";
 import { apiSocialLogin } from "helpers/api/course";
+import { createDirectus, authentication } from '@directus/sdk';
 
 const Login = () => {
   let dispatch = useDispatch();
   const history = useHistory();
   useEffect(() => {
-    localStorage.clear()
-  }, [])
-  const login = useGoogleLogin({
-    onSuccess: tokenResponse => {
-      console.log('tokenResponse', tokenResponse)
-      if (tokenResponse?.access_token) {
+    localStorage.clear();
+  }, []);
+  const login = async () => {
+    window.location.href = "https://education.akaky.xyz/auth/login/google";
+    // const client = createDirectus('https://education.akaky.xyz')
+    //  .with(authentication('cookie', { credentials: 'include' }));
 
-        onSsoLogin(tokenResponse?.access_token)
+    // await client.refresh();
+  };
 
-      }
-    },
-  });
-  const onSsoLogin = (token) => {
-    const params = {
-      access_token: token,
-    }
-    apiSocialLogin(params).then(res => {
-      console.log('Login=== res', res);
-      localStorage.setItem('TOKEN', res?.jwt);
-      localStorage.setItem('USER', JSON.stringify(res?.user));
-      history.push('/home')
-    }).catch(error => {
-      console.log('Login=== error', error);
-    })
-  }
   const onCancel = () => {
-    history.push('/home')
-  }
+    history.push("/home");
+  };
   return (
     <div className="login-container">
       <img className="login-bg" src="/login-background.svg" alt="image" />
@@ -47,15 +33,9 @@ const Login = () => {
         <img className="login-gg-img" src="/google.svg" alt="image" />
         <div className="login-gg-txt">Google</div>
       </div>
-      {/* <GoogleLogin
-        onSuccess={credentialResponse => {
-          console.log('credentialResponse', credentialResponse);
-        }}
-        onError={() => {
-          console.log('Login Failed');
-        }}
-      />; */}
-      <div className="login-cancel" onClick={onCancel}>Bỏ qua</div>
+      <div className="login-cancel" onClick={onCancel}>
+        Bỏ qua
+      </div>
     </div>
   );
 };

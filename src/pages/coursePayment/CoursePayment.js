@@ -14,6 +14,7 @@ export const getQrPayment = (amount, description) => {
 }
 
 const Coursepayment = () => {
+  console.log('aaaaaa');
   const history = useHistory();
   const [status, setStatus] = useState('INIT');
   const onPayment = () => {

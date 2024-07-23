@@ -9,11 +9,15 @@ import {
   GET_QUESTIONS_ANSWER,
   GET_QUESTIONS_ANSWER_SUCCESS,
   GET_QUESTIONS_ANSWER_FAIL,
+  GET_MY_BOOKS,
+  GET_MY_BOOKS_SUCCESS,
+  GET_MY_BOOKS_FAIL,
 } from "./actionTypes";
 
 const initialState = {
   courses: [],
   books: [],
+  my_books: [],
   questions: [],
   loading: false,
   error: {
@@ -64,7 +68,26 @@ const HomeReducer = (state = initialState, action) => {
         error: { message: action.payload },
       };
       break;
-
+    //my books
+    case GET_MY_BOOKS:
+      state = { ...state, loading: true };
+      break;
+    case GET_MY_BOOKS_SUCCESS:
+      state = {
+        ...state,
+        my_books: action.payload,
+        loading: false,
+        error: { message: "" },
+      };
+      break;
+    case GET_MY_BOOKS_FAIL:
+      state = {
+        ...state,
+        my_books: [],
+        loading: false,
+        error: { message: action.payload },
+      };
+      break;
     //questions
     case GET_QUESTIONS_ANSWER:
       state = { ...state, loading: true };
