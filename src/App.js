@@ -15,6 +15,7 @@ const Lesson = lazy(() => import("./pages/lesson/Lesson"));
 const Account = lazy(() => import("./pages/account/Account"));
 const LessonDetail = lazy(() => import("./pages/lessonDetail/LessonDetail"));
 const Event = lazy(() => import("./pages/event/Event"));
+const EventDetail = lazy(() => import("./pages/eventDetail/Event"));
 const Login = lazy(() => import("./pages/login/Login"));
 const ResultExam = lazy(() => import("./pages/resultExam"));
 const Exam = lazy(() => import("./pages/exam/Exam"));
@@ -60,6 +61,7 @@ const App = () => {
                       <Route path="/course/:courseId/lesson/:lessonId" exact component={() => <Lesson />} />
                       <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
                       <Route path="/event" exact component={() => <Event />} />
+                      <Route path="/event/:eventId" exact component={() => <EventDetail />} />
                       <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
                       <Route path="/course-payment" exact component={() => <CoursePayment />} />
                       <Route path="/free-course" exact component={() => <ListFreeCourse />} />
@@ -84,6 +86,7 @@ const App = () => {
                     <Route path="/course/:courseId/lesson/:lessonId" exact component={() => <Lesson />} />
                     <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
                     <Route path="/event" exact component={() => <Event />} />
+                    <Route path="/event/:eventId" exact component={() => <EventDetail />} />
                     <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
                     <Route path="/free-course" exact component={() => <ListFreeCourse />} />
                     <Route path="/free-course/:courseId" exact component={() => <FreeCourse />} />

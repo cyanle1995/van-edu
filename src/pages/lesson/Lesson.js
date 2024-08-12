@@ -84,7 +84,7 @@ const Lesson = () => {
             alt="image"
           />
         )}
-        <div className="lession-video-name">{course["0"]?.description}</div>
+        <div className="lession-video-name">{course["0"]?.description?.replace(/<[^>]+>/g, '')}</div>
         {/* <div className='lession-video-des-item'>- Thời gian yêu cầu 1 tiếng 1 ngày/ 6 tháng</div>
         <div className='lession-video-des-item'>- Bài tập: Theo yêu cầu của mentor</div> */}
         <div className="lession-mentor-layout">

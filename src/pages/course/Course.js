@@ -64,6 +64,7 @@ const Course = () => {
   const onGotoFreeCourseDetail = (id) => {
     history.push(`free-course/${id}`);
   };
+  console.log('freeCourse', freeCourse);
   return (
     <div className="course-container">
       <div className="app-header">
@@ -132,8 +133,8 @@ const Course = () => {
                 src={'./img.jpg'}
                 alt="image"
               />}
-                <div className="topic-name">
-                  <div className="topic-name-text">{item?.name}</div>
+                <div className="course-topic-name">
+                  <div className="course-topic-name-text">{item?.name}</div>
                 </div>
               </div>
             );
