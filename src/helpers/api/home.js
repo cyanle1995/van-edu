@@ -26,4 +26,18 @@ const listBookCategory = async () => {
   )
   return res
 }
+export const listAllEvents = async (config)=> {
+  try {
+    const res = await DirectUsClient.request(
+      readItems('events', {
+        filter: {
+          ...config.filter,
+        },
+      })
+    )
+    return res
+  } catch (error) {
+    return []
+  }
+}
 export const apiGetQuestionAndAnswers = () => get("question-and-answers");

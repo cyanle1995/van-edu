@@ -2,10 +2,15 @@ import { getImageURL } from "utils/Utils";
 import "./styles.scss";
 import Button from "components/button/Button";
 import moment from "moment";
+import { useHistory } from "react-router-dom";
 
 const EventCard = (props) => {
-  const { item, key, btnText, onClick } = props;
+  const history = useHistory();
 
+  const { item, key, btnText, onClick } = props;
+  const onGotoDetail = (item) => {
+    history.push(`/event/${item.id}`)
+  }
   return (
     <div className="card" key={key}>
       <img className="cover" src={getImageURL(item?.thumb)} alt="image" />
@@ -36,7 +41,7 @@ const EventCard = (props) => {
           text={btnText}
           background="#6059E3"
           width="auto"
-          onClick={onClick}
+          onClick={onGotoDetail}
         />
       </div>
     </div>

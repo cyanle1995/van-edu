@@ -93,7 +93,7 @@ const Topic = () => {
             if (courseId == item.id)
               return (
                 <div
-                  className="topic-item-selected"
+                  className="ctopic-item-selected"
                   onClick={() => onSelectTopic(item.id)}
                 >
                   {item?.name}
@@ -101,7 +101,7 @@ const Topic = () => {
               );
             return (
               <div
-                className="topic-item"
+                className="ctopic-item"
                 onClick={() => onSelectTopic(item.id)}
               >
                 {item?.name}

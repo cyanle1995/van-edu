@@ -2,11 +2,14 @@ import EventCard from "components/eventCard/eventCard";
 import "../styles.scss";
 import { useEffect, useState } from "react";
 import { apiGetListHomeEvent } from "helpers/api/course";
+import { useHistory } from "react-router-dom";
 
 const Events = () => {
+  const history = useHistory();
+
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    console.log('vao day');
+    console.log("vao day");
     apiGetListHomeEvent({
       filter: {
         is_upcoming: {
@@ -15,7 +18,7 @@ const Events = () => {
       },
     })
       .then((res) => {
-        console.log('resssxxx', res);
+        console.log("resssxxx", res);
         if (res?.length > 0) {
           setEvents(res);
         }
@@ -24,10 +27,12 @@ const Events = () => {
         setEvents([]);
       });
   }, []);
-
+  const onGotoEvent = () => {
+    history.push("/event");
+  };
   return (
     <div className="list-container">
-      <div className="heading">
+      <div className="heading" onClick={onGotoEvent}>
         <div className="text">Tất cả sự kiện</div>
         <img className="icon" src="/arrow-right.svg" alt="image" />
       </div>

@@ -50,7 +50,7 @@ const Books = () => {
                 <div className="name-book">{item.title}</div>
                 <div className="tacgia">{item.tacgia}</div>
                 {item.premium && <div className="premium-book">Premium</div>}
-                <Rate allowHalf defaultValue={item.rates} className="rate" />
+                <Rate allowHalf defaultValue={item.rates} className="rate" disabled/>
               </div>
 
               {item.sachnoi && (

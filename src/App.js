@@ -15,11 +15,14 @@ const Lesson = lazy(() => import("./pages/lesson/Lesson"));
 const Account = lazy(() => import("./pages/account/Account"));
 const LessonDetail = lazy(() => import("./pages/lessonDetail/LessonDetail"));
 const Event = lazy(() => import("./pages/event/Event"));
+const EventDetail = lazy(() => import("./pages/eventDetail/Event"));
 const Login = lazy(() => import("./pages/login/Login"));
 const ResultExam = lazy(() => import("./pages/resultExam"));
 const Exam = lazy(() => import("./pages/exam/Exam"));
 const CoursePayment = lazy(() => import("./pages/coursePayment/CoursePayment"));
-const ListFreeCourse = lazy(() => import("./pages/listFreeCourse/ListFreeCourse"));
+const ListFreeCourse = lazy(() =>
+  import("./pages/listFreeCourse/ListFreeCourse")
+);
 const FreeCourse = lazy(() => import("./pages/freeCourse/FreeCourse"));
 const Book = lazy(() => import("./pages/book/Book"));
 const BookDetail = lazy(() => import("./pages/bookDetail/BookDetail"));
@@ -49,47 +52,137 @@ const App = () => {
           <Router>
             {!isAuthen ? (
               <Suspense fallback={<Loading />}>
-                <div style={{paddingBottom: "97px"}}>
+                <div style={{ paddingBottom: "97px" }}>
                   <Switch>
-                    <Route path="/" exact component={() => <Intro />} />
+                    <Route path="/" exact component={() => <Home />} />
                     <Route path="/login" exact component={() => <Login />} />
                     <Route path="/home" exact component={() => <Home />} />
-                      <Route path="/account" exact component={() => <Account />} />
-                      <Route path="/course" exact component={() => <Course />} />
-                      <Route path="/course/:courseId" exact component={() => <Topic />} />
-                      <Route path="/course/:courseId/lesson/:lessonId" exact component={() => <Lesson />} />
-                      <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
-                      <Route path="/event" exact component={() => <Event />} />
-                      <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
-                      <Route path="/course-payment" exact component={() => <CoursePayment />} />
-                      <Route path="/free-course" exact component={() => <ListFreeCourse />} />
-                      <Route path="/free-course/:courseId" exact component={() => <FreeCourse />} />
-                      <Route path="/book" exact component={() => <Book />} />
-                      <Route path="/book/:bookId" exact component={() => <BookDetail />} />
-                      <Route path="/free-book" exact component={() => <ListFreeBook />} />
+                    <Route
+                      path="/account"
+                      exact
+                      component={() => <Account />}
+                    />
+                    <Route path="/course" exact component={() => <Course />} />
+                    <Route
+                      path="/course/:courseId"
+                      exact
+                      component={() => <Topic />}
+                    />
+                    <Route
+                      path="/course/:courseId/lesson/:lessonId"
+                      exact
+                      component={() => <Lesson />}
+                    />
+                    <Route
+                      path="/course/:courseId/lesson/:lessonId/detail/:videoId"
+                      exact
+                      component={() => <LessonDetail />}
+                    />
+                    <Route path="/event" exact component={() => <Event />} />
+                    <Route
+                      path="/event/:eventId"
+                      exact
+                      component={() => <EventDetail />}
+                    />
+                    <Route
+                      path="/course/:courseId/exam"
+                      exact
+                      component={() => <Exam />}
+                    />
+                    <Route
+                      path="/course-payment"
+                      exact
+                      component={() => <CoursePayment />}
+                    />
+                    <Route
+                      path="/free-course"
+                      exact
+                      component={() => <ListFreeCourse />}
+                    />
+                    <Route
+                      path="/free-course/:courseId"
+                      exact
+                      component={() => <FreeCourse />}
+                    />
+                    <Route path="/book" exact component={() => <Book />} />
+                    <Route
+                      path="/book/:bookId"
+                      exact
+                      component={() => <BookDetail />}
+                    />
+                    <Route
+                      path="/free-book"
+                      exact
+                      component={() => <ListFreeBook />}
+                    />
                   </Switch>
                 </div>
               </Suspense>
             ) : (
               <Suspense fallback={<Loading />}>
                 {/* <AppHeader /> */}
-                <div style={{paddingBottom: "97px"}}>
+                <div style={{ paddingBottom: "97px" }}>
                   <Switch>
                     <Route path="/login" exact component={() => <Login />} />
                     <Route path="/home" exact component={() => <Home />} />
-                    <Route path="/account" exact component={() => <Account />} />
-                    <Route path="/course-payment" exact component={() => <CoursePayment />} />
+                    <Route
+                      path="/account"
+                      exact
+                      component={() => <Account />}
+                    />
+                    <Route
+                      path="/course-payment"
+                      exact
+                      component={() => <CoursePayment />}
+                    />
                     <Route path="/course" exact component={() => <Course />} />
-                    <Route path="/course/:courseId" exact component={() => <Topic />} />
-                    <Route path="/course/:courseId/lesson/:lessonId" exact component={() => <Lesson />} />
-                    <Route path="/course/:courseId/lesson/:lessonId/detail/:videoId" exact component={() => <LessonDetail />} />
+                    <Route
+                      path="/course/:courseId"
+                      exact
+                      component={() => <Topic />}
+                    />
+                    <Route
+                      path="/course/:courseId/lesson/:lessonId"
+                      exact
+                      component={() => <Lesson />}
+                    />
+                    <Route
+                      path="/course/:courseId/lesson/:lessonId/detail/:videoId"
+                      exact
+                      component={() => <LessonDetail />}
+                    />
                     <Route path="/event" exact component={() => <Event />} />
-                    <Route path="/course/:courseId/exam" exact component={() => <Exam />} />
-                    <Route path="/free-course" exact component={() => <ListFreeCourse />} />
-                    <Route path="/free-course/:courseId" exact component={() => <FreeCourse />} />
+                    <Route
+                      path="/event/:eventId"
+                      exact
+                      component={() => <EventDetail />}
+                    />
+                    <Route
+                      path="/course/:courseId/exam"
+                      exact
+                      component={() => <Exam />}
+                    />
+                    <Route
+                      path="/free-course"
+                      exact
+                      component={() => <ListFreeCourse />}
+                    />
+                    <Route
+                      path="/free-course/:courseId"
+                      exact
+                      component={() => <FreeCourse />}
+                    />
                     <Route path="/book" exact component={() => <Book />} />
-                    <Route path="/book/:bookId" exact component={() => <BookDetail />} />
-                    <Route path="/free-book" exact component={() => <ListFreeBook />} />
+                    <Route
+                      path="/book/:bookId"
+                      exact
+                      component={() => <BookDetail />}
+                    />
+                    <Route
+                      path="/free-book"
+                      exact
+                      component={() => <ListFreeBook />}
+                    />
                   </Switch>
                 </div>
                 {/* <AppFooter /> */}
